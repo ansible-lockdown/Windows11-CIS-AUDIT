@@ -1,7 +1,7 @@
 {
   "README.md": "7189ebe3490978c264f00c77705aea0a8ac5dd6e0cba2d2ed7166b92d2801914",
   "collector_targets.json": "16edd9e8d89be79351b792727d4d5d80f8276d73a465f897a32a7643cfd3dee7",
-  "coverage.json": "aca5aceb500e121d22ea16253fa0fbf4829b8328fb53aab6f1a3c597f2f83759",
+  "coverage.json": "4ca4e8773298e84be1e5a99430027761adc64e57a77ba57fb59138d56f621967",
   "goss.yml": "6fa05b7cdd95cfdf60d2a44683fc02ef0ec06215d44f75262fa1f0cccae02697",
   "section_1/cis_1.1.x/cis_1.1.1.yml": "900360533aa21d09b0aa3c38240aea8d137d9381b511bc5ecd36f37de3ebf22d",
   "section_1/cis_1.1.x/cis_1.1.2.yml": "ad69281cfe857a96aaa0cfa3b364ee9896f958885266c4f729adeaee51842c2c",
@@ -289,7 +289,7 @@
   "section_18/cis_18.9.19.x/cis_18.9.19.4.yml": "46c32c021c2a87b3f18ebec1901022509b93f416b0b202ce53e9d5faaf108265",
   "section_18/cis_18.9.19.x/cis_18.9.19.5.yml": "2f6e92c24c2ea7b7802c787515d0ed1eec0767a33b09e816099507b825bfdcf3",
   "section_18/cis_18.9.19.x/cis_18.9.19.6.yml": "f5c68be72a7ef3ff2d533e877316cadf24f11f4132aa8a8b834c5dcd48bd94c7",
-  "section_18/cis_18.9.19.x/cis_18.9.19.7.yml": "eb73a4675072a893949187b3dae861dc1bce5c398412694f947b495382526ae2",
+  "section_18/cis_18.9.19.x/cis_18.9.19.7.yml": "bec7b3704c5fc2e71befa69086120e6101657c0ff66256b4cb1232f53582c3de",
   "section_18/cis_18.9.20.x/cis_18.9.20.1.1.yml": "5815ec74dead82fe37cc4f247e2ac83502e2d8f9665ba93ae2766a2e099b77be",
   "section_18/cis_18.9.20.x/cis_18.9.20.1.10.yml": "7319e7f70e78a95bc676f8befe27a70c09886fde4240a6a6e83e4a615d1ba13b",
   "section_18/cis_18.9.20.x/cis_18.9.20.1.11.yml": "f902f2f3fc899736fe149465cc5fcb8849cdaa612d42df8becd8deac5427c70a",
@@ -543,5 +543,5 @@
   "section_9/cis_9.3.x/cis_9.3.7.yml": "a57f3c5f739c84b73884c531827871aa12215571e039f2704369344eb87930dd",
   "section_9/cis_9.3.x/cis_9.3.8.yml": "86f05a109195b0b2cd8bbfc6f76e6dfbd67db90a2baaae312b3006c162d8ec2f",
   "section_9/cis_9.3.x/cis_9.3.9.yml": "67f69cacade50fcb0cf9bdb169771d31fa59671c5e6fa2f38fe0274df78342f7",
-  "vars/CIS.yml": "aab9e68d5fd7dda176636c2c5942b338d6f77684e83f5d47e7b486653504b0b1"
+  "vars/CIS.yml": "d686eb0d3b7dccbf8663a7a450b719f64b2421fe18f405db84fd309bf0a0d711"
 }

@@ -644,21 +644,9 @@ win11cis_require_pin_for_pairing: 1
 win11cis_restrict_sending_ntlm_traffic: 1
 win11cis_sc_remove_option: 1
 win11cis_screen_saver_grace_period: 5
-# Who should hold this right, as sorted SIDs. Seeded from
-# the role's win11cis_sebatchlogonright. Empty means No One.
-# A Hyper-V host also holds S-1-5-83-0; a WDAG host also
-# holds the local WDAGUtilityAccount.
 win11cis_sebatchlogonright_expected: 'S-1-5-32-544'
-# Who should hold this right, as sorted SIDs. Seeded from
-# the role's win11cis_secreatetokenprivilege. Empty means No One.
-# A Hyper-V host also holds S-1-5-83-0; a WDAG host also
-# holds the local WDAGUtilityAccount.
 win11cis_secreatetokenprivilege_expected: 'NONE'
 win11cis_security_max_log_file_size: 196608
-# Who should hold this right, as sorted SIDs. Seeded from
-# the role's win11cis_seservicelogonright. Empty means No One.
-# A Hyper-V host also holds S-1-5-83-0; a WDAG host also
-# holds the local WDAGUtilityAccount.
 win11cis_seservicelogonright_expected: 'NONE'
 win11cis_setup_max_log_file_size: 32768
 win11cis_smb_auto_disconnect_time: 15

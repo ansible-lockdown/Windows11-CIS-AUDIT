@@ -4,8 +4,15 @@
   {{ if .Vars.win11cis_rule_18_9_19_7 }}
     {{ if .Vars.win11cis_domain_joined }}
 registry:
-  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\DisableBkGndGroupPolicy:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\DisableBkGndGroupPolicy\:
     title: "18.9.19.7 | Ensure 'Turn off background refresh of Group Policy' is set to 'Disabled' | key"
+    exists: false
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.19.7
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\DisableBkGndGroupPolicy:
+    title: "18.9.19.7 | Ensure 'Turn off background refresh of Group Policy' is set to 'Disabled' | DisableBkGndGroupPolicy"
     exists: false
     meta:
       workstation: 1

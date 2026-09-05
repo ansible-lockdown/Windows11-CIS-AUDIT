@@ -3768,7 +3768,7 @@
     "emitted": true,
     "gate": "win11cis_level_1",
     "file": "section_18/cis_18.9.19.x/cis_18.9.19.7.yml",
-    "assertions": 1,
+    "assertions": 2,
     "resources": [
       "registry"
     ],
