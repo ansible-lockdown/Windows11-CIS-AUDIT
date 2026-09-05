@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_19_5_1_1 }}
+file:
+  win11cis_19_5_1_1_per_user_policy:
+    title: "19.5.1.1 | Ensure 'Turn off toast notifications on the lock screen' is set to 'Enabled' | per-user policy"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\HKU.19.5.1.1'
+    exists: true
+    contents:
+      - '/^COMPLIANT profiles=[1-9][0-9]*$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 19.5.1.1
+  {{ end }}
+{{ end }}

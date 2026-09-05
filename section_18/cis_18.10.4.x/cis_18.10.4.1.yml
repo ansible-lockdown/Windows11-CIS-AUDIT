@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_4_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy\LetAppsActivateWithVoiceAboveLock:
+    title: "18.10.4.1 | Ensure 'Let Windows apps activate with voice while the system is locked' is set to 'Enabled: Force Deny' | LetAppsActivateWithVoiceAboveLock"
+    exists: true
+    value: 2
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.4.1
+  {{ end }}
+{{ end }}

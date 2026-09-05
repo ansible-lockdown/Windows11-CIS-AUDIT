@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_5_3 }}
+file:
+  win11cis_5_3_browser:
+    title: "5.3 | Ensure 'Computer Browser (Browser)' is set to 'Disabled' or 'Not Installed' | Browser"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.Browser'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 5.3
+  {{ end }}
+{{ end }}

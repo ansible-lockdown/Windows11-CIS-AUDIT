@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_10_9_1_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\FVE\FDVDiscoveryVolumeType:
+    title: "18.10.9.1.1 | (BL) Ensure 'Allow access to BitLocker-protected fixed data drives from earlier versions of Windows' is set to 'Disabled' | FDVDiscoveryVolumeType"
+    exists: true
+    value: ""
+    type: REG_SZ
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.10.9.1.1
+  {{ end }}
+{{ end }}

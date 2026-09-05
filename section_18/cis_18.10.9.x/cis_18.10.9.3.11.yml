@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_10_9_3_11 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\FVE\RDVPassphrase:
+    title: "18.10.9.3.11 | (BL) Ensure 'Configure use of passwords for removable data drives' is set to 'Disabled' | RDVPassphrase"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.10.9.3.11
+  {{ end }}
+{{ end }}

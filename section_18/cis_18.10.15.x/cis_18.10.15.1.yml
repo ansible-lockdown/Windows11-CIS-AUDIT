@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_15_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection\AllowTelemetry:
+    title: "18.10.15.1 | Ensure 'Allow Diagnostic Data' is set to 'Enabled: Diagnostic data off (not recommended)' or 'Enabled: Send required diagnostic data' | AllowTelemetry"
+    exists: true
+    value: {{ .Vars.win11cis_allow_telemetry }}
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.15.1
+  {{ end }}
+{{ end }}

@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_43_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\AppHVSI\AuditApplicationGuard:
+    title: "18.10.43.1 | Ensure 'Allow auditing events in Microsoft Defender Application Guard' is set to 'Enabled' | AuditApplicationGuard"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.43.1
+  {{ end }}
+{{ end }}

@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_43_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\AppHVSI\AllowCameraMicrophoneRedirection:
+    title: "18.10.43.2 | Ensure 'Allow camera and microphone access in Microsoft Defender Application Guard' is set to 'Disabled' | AllowCameraMicrophoneRedirection"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.43.2
+  {{ end }}
+{{ end }}

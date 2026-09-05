@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_9_25_1 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\LAPS\BackupDirectory:
+    title: "18.9.25.1 | Ensure 'Configure password backup directory' is set to 'Enabled: Active Directory' or 'Enabled: Azure Active Directory' | BackupDirectory"
+    exists: true
+    value: {{ .Vars.win11cis_laps_backup_directory }}
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.25.1
+  {{ end }}
+{{ end }}

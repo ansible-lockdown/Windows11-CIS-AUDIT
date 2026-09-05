@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_10_9_2_3 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\FVE\OSRecovery:
+    title: "18.10.9.2.3 | (BL) Ensure 'Choose how BitLocker-protected operating system drives can be recovered' is set to 'Enabled' | OSRecovery"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.10.9.2.3
+  {{ end }}
+{{ end }}

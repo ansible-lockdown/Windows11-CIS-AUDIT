@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_75_1_5 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\WTDS\Components\ServiceEnabled:
+    title: "18.10.75.1.5 | Ensure 'Service Enabled' is set to 'Enabled' | ServiceEnabled"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.75.1.5
+  {{ end }}
+{{ end }}

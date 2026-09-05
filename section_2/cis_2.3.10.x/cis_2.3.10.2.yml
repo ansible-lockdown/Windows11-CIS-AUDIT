@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_10_2 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Control\Lsa\RestrictAnonymousSAM:
+    title: "2.3.10.2 | Ensure 'Network access: Do not allow anonymous enumeration of SAM accounts' is set to 'Enabled' | RestrictAnonymousSAM"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.10.2
+  {{ end }}
+{{ end }}

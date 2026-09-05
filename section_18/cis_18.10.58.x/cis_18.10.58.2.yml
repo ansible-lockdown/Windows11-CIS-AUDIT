@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_10_58_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search\AllowCloudSearch:
+    title: "18.10.58.2 | Ensure 'Allow Cloud Search' is set to 'Enabled: Disable Cloud Search' | AllowCloudSearch"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.10.58.2
+  {{ end }}
+{{ end }}

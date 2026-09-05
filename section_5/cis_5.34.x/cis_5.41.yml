@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_5_41 }}
+file:
+  win11cis_5_41_xboxgipsvc:
+    title: "5.41 | Ensure 'Xbox Accessory Management Service (XboxGipSvc)' is set to 'Disabled' | XboxGipSvc"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.XboxGipSvc'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 5.41
+  {{ end }}
+{{ end }}

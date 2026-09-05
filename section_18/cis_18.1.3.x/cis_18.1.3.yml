@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_1_3 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\AllowOnlineTips:
+    title: "18.1.3 | Ensure 'Allow Online Tips' is set to 'Disabled' | AllowOnlineTips"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.1.3
+  {{ end }}
+{{ end }}

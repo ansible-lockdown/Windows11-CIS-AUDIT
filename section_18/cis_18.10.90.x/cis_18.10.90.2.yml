@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_90_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Sandbox\AllowNetworking:
+    title: "18.10.90.2 | Ensure 'Allow networking in Windows Sandbox' is set to 'Disabled' | AllowNetworking"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.90.2
+  {{ end }}
+{{ end }}

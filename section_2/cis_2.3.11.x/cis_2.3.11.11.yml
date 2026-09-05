@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_11_11 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Msv1_0\AuditReceivingNTLMTraffic:
+    title: "2.3.11.11 | Ensure 'Network security: Restrict NTLM: Audit Incoming NTLM Traffic' is set to 'Enable auditing for all accounts' | AuditReceivingNTLMTraffic"
+    exists: true
+    value: 2
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.11.11
+  {{ end }}
+{{ end }}

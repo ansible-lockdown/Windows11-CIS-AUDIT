@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_10_12_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent\DisableCloudOptimizedContent:
+    title: "18.10.12.2 | Ensure 'Turn off cloud optimized content' is set to 'Enabled' | DisableCloudOptimizedContent"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.10.12.2
+  {{ end }}
+{{ end }}

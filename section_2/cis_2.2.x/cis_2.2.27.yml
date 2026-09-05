@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_2_27 }}
+file:
+  win11cis_2_2_27_selockmemoryprivilege:
+    title: "2.2.27 | Ensure 'Lock pages in memory' is set to 'No One' | SeLockMemoryPrivilege"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeLockMemoryPrivilege'
+    exists: true
+    contents:
+      - '/^NONE$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.2.27
+  {{ end }}
+{{ end }}

@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_10_79_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace\AllowSuggestedAppsInWindowsInkWorkspace:
+    title: "18.10.79.1 | Ensure 'Allow suggested apps in Windows Ink Workspace' is set to 'Disabled' | AllowSuggestedAppsInWindowsInkWorkspace"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.10.79.1
+  {{ end }}
+{{ end }}

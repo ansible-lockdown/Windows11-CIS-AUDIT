@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_7_7 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\RPC\RpcTcpPort:
+    title: "18.7.7 | Ensure 'Configure RPC over TCP port' is set to 'Enabled: 0' | RpcTcpPort"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.7.7
+  {{ end }}
+{{ end }}

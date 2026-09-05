@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_9_28_4 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\System\EnumerateLocalUsers:
+    title: "18.9.28.4 | Ensure 'Enumerate local users on domain-joined computers' is set to 'Disabled' | EnumerateLocalUsers"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.28.4
+  {{ end }}
+{{ end }}

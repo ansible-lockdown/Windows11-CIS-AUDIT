@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_10_8 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedPaths\Machine:
+    title: "2.3.10.8 | Ensure 'Network access: Remotely accessible registry paths and sub-paths' is configured | Machine"
+    exists: true
+    value: "System\\CurrentControlSet\\Control\\Print\\Printers\nSystem\\CurrentControlSet\\Services\\Eventlog\nSoftware\\Microsoft\\OLAP Server\nSoftware\\Microsoft\\Windows NT\\CurrentVersion\\Print\nSoftware\\Microsoft\\Windows NT\\CurrentVersion\\Windows\nSystem\\CurrentControlSet\\Control\\ContentIndex\nSystem\\CurrentControlSet\\Control\\Terminal Server\nSystem\\CurrentControlSet\\Control\\Terminal Server\\UserConfig\nSystem\\CurrentControlSet\\Control\\Terminal Server\\DefaultUserConfiguration\nSoftware\\Microsoft\\Windows NT\\CurrentVersion\\Perflib\nSystem\\CurrentControlSet\\Services\\SysmonLog"
+    type: REG_MULTI_SZ
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.10.8
+  {{ end }}
+{{ end }}

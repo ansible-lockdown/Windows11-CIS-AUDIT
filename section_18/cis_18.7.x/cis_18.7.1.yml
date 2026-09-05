@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_7_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\RegisterSpoolerRemoteRpcEndPoint:
+    title: "18.7.1 | Ensure 'Allow Print Spooler to accept client connections' is set to 'Disabled' | RegisterSpoolerRemoteRpcEndPoint"
+    exists: true
+    value: 2
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.7.1
+  {{ end }}
+{{ end }}

@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_2_6 }}
+file:
+  win11cis_2_2_6_seremoteinteractivelogonright:
+    title: "2.2.6 | Ensure 'Allow log on through Remote Desktop Services' is set to 'Administrators, Remote Desktop Users' | SeRemoteInteractiveLogonRight"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeRemoteInteractiveLogonRight'
+    exists: true
+    contents:
+      - '/^S-1-5-32-544,S-1-5-32-555$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.2.6
+  {{ end }}
+{{ end }}

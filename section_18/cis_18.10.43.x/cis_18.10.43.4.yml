@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_43_4 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\AppHVSI\SaveFilesToHost:
+    title: "18.10.43.4 | Ensure 'Allow files to download and save to the host operating system from Microsoft Defender Application Guard' is set to 'Disabled' | SaveFilesToHost"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.43.4
+  {{ end }}
+{{ end }}

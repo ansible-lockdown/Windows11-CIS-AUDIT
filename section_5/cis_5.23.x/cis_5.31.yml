@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_5_31 }}
+file:
+  win11cis_5_31_upnphost:
+    title: "5.31 | Ensure 'UPnP Device Host (upnphost)' is set to 'Disabled' | upnphost"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.upnphost'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 5.31
+  {{ end }}
+{{ end }}

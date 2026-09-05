@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_10_42_5_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet\SpynetReporting:
+    title: "18.10.42.5.2 | Ensure 'Join Microsoft MAPS' is set to 'Disabled' | SpynetReporting"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.10.42.5.2
+  {{ end }}
+{{ end }}

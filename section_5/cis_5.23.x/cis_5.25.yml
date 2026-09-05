@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_5_25 }}
+file:
+  win11cis_5_25_remoteaccess:
+    title: "5.25 | Ensure 'Routing and Remote Access (RemoteAccess)' is set to 'Disabled' | RemoteAccess"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.RemoteAccess'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 5.25
+  {{ end }}
+{{ end }}

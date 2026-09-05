@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_10_86_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging\EnableScriptBlockLogging:
+    title: "18.10.86.1 | Ensure 'Turn on PowerShell Script Block Logging' is set to 'Enabled' | EnableScriptBlockLogging"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.10.86.1
+  {{ end }}
+{{ end }}

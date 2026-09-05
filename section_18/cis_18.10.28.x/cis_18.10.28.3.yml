@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_28_3 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer\NoDataExecutionPrevention:
+    title: "18.10.28.3 | Ensure 'Turn off Data Execution Prevention for Explorer' is set to 'Disabled' | NoDataExecutionPrevention"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.28.3
+  {{ end }}
+{{ end }}

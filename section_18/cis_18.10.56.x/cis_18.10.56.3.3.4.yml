@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_10_56_3_3_4 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fDisableLocationRedir:
+    title: "18.10.56.3.3.4 | Ensure 'Do not allow location redirection' is set to 'Enabled' | fDisableLocationRedir"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.10.56.3.3.4
+  {{ end }}
+{{ end }}

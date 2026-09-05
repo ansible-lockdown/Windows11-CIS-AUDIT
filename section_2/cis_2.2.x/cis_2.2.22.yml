@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_2_22 }}
+file:
+  win11cis_2_2_22_seremoteshutdownprivilege:
+    title: "2.2.22 | Ensure 'Force shutdown from a remote system' is set to 'Administrators' | SeRemoteShutdownPrivilege"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeRemoteShutdownPrivilege'
+    exists: true
+    contents:
+      - '/^S-1-5-32-544$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.2.22
+  {{ end }}
+{{ end }}

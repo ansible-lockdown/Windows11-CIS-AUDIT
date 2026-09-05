@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_11_2 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Msv1_0\AllowNullSessionFallback:
+    title: "2.3.11.2 | Ensure 'Network security: Allow LocalSystem NULL session fallback' is set to 'Disabled' | AllowNullSessionFallback"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.11.2
+  {{ end }}
+{{ end }}

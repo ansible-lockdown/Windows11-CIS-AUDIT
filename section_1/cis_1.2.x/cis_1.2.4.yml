@@ -1,0 +1,21 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_1_2_4 }}
+command:
+  win11cis_1_2_4_resetlockoutcount:
+    title: "1.2.4 | Ensure 'Reset account lockout counter after' is set to '15 or more minute(s)' | ResetLockoutCount"
+    exec: |-
+      powershell -NoProfile -NonInteractive -Command "$p = Join-Path '{{ .Vars.win11cis_snapshot_dir }}' 'SystemAccess.ResetLockoutCount'; if (-not (Test-Path -LiteralPath $p)) { 'NONCOMPLIANT not_collected' } else { $r = (Get-Content -LiteralPath $p -Raw).Trim(); if ($r -notmatch '^[0-9]+$') { 'NONCOMPLIANT actual=' + $r } else { $v = [int]$r; if ($v -ge {{ .Vars.win11cis_account_lockout_counter_reset }}) { 'COMPLIANT' } else { 'NONCOMPLIANT actual=' + $v } } }"
+    exit-status: 0
+    stdout:
+      - '/^COMPLIANT$/'
+    stderr:
+      have-len: 0
+    timeout: {{ .Vars.timeout_ms }}
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 1.2.4
+  {{ end }}
+{{ end }}

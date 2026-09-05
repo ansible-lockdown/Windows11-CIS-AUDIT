@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_17_9_5 }}
+file:
+  win11cis_17_9_5_system_integrity:
+    title: "17.9.5 | Ensure 'Audit System Integrity' is set to 'Success and Failure' | System Integrity"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\AuditPolicy.17.9.5'
+    exists: true
+    contents:
+      - '/^3$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 17.9.5
+  {{ end }}
+{{ end }}

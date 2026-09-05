@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_9_33_6_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e8-98b7-4186-b944-eafa664402d9\DCSettingIndex:
+    title: "18.9.33.6.1 | Ensure 'Allow network connectivity during connected-standby (on battery)' is set to 'Disabled' | DCSettingIndex"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.33.6.1
+  {{ end }}
+{{ end }}

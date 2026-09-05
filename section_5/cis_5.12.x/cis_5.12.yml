@@ -1,0 +1,19 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_5_12 }}
+    {{ if not .Vars.win11cis_win_skip_for_test }}
+file:
+  win11cis_5_12_sshd:
+    title: "5.12 | Ensure 'OpenSSH SSH Server (sshd)' is set to 'Disabled' or 'Not Installed' | sshd"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.sshd'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 5.12
+    {{ end }}
+  {{ end }}
+{{ end }}

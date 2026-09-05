@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_10_9_3_10 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\FVE\RDVHardwareEncryption:
+    title: "18.10.9.3.10 | (BL) Ensure 'Configure use of hardware-based encryption for removable data drives' is set to 'Disabled' | RDVHardwareEncryption"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.10.9.3.10
+  {{ end }}
+{{ end }}

@@ -1,0 +1,27 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_9_3_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\EnableFirewall:
+    title: "9.3.1 | Ensure 'Windows Firewall: Public: Firewall state' is set to 'On (recommended)' | EnableFirewall"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 9.3.1
+file:
+  win11cis_9_3_1_effective:
+    title: "9.3.1 | Ensure 'Windows Firewall: Public: Firewall state' is set to 'On (recommended)' | effective"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Firewall.Public.Enabled'
+    exists: true
+    contents:
+      - '/^True$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 9.3.1
+  {{ end }}
+{{ end }}

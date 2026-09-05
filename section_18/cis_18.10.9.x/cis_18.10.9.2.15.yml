@@ -1,0 +1,19 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_10_9_2_15 }}
+    {{ if not .Vars.win11cis_domain_joined }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\FVE\UseTPM:
+    title: "18.10.9.2.15 | (BL) Ensure 'Require additional authentication at startup: Configure TPM startup:' is set to 'Enabled: Do not allow TPM' | UseTPM"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.10.9.2.15
+    {{ end }}
+  {{ end }}
+{{ end }}

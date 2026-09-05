@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_9_7_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Device Metadata\PreventDeviceMetadataFromNetwork:
+    title: "18.9.7.2 | Ensure 'Prevent device metadata retrieval from the Internet' is set to 'Enabled' | PreventDeviceMetadataFromNetwork"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.7.2
+  {{ end }}
+{{ end }}

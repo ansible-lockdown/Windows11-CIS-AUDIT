@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_11_7 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Control\Lsa\LMCompatibilityLevel:
+    title: "2.3.11.7 | Ensure 'Network security: LAN Manager authentication level' is set to 'Send NTLMv2 response only. Refuse LM & NTLM' | LMCompatibilityLevel"
+    exists: true
+    value: 5
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.11.7
+  {{ end }}
+{{ end }}

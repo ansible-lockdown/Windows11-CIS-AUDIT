@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_65_3 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\WindowsStore\AutoDownload:
+    title: "18.10.65.3 | Ensure 'Turn off Automatic Download and Install of updates' is set to 'Disabled' | AutoDownload"
+    exists: true
+    value: 4
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.65.3
+  {{ end }}
+{{ end }}

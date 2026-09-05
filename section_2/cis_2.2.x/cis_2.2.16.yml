@@ -1,0 +1,20 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_2_16 }}
+    {{ if not .Vars.win11cis_win_skip_for_test }}
+file:
+  win11cis_2_2_16_sedenynetworklogonright:
+    title: "2.2.16 | Ensure 'Deny access to this computer from the network' to include 'Guests, Local account' | SeDenyNetworkLogonRight"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeDenyNetworkLogonRight'
+    exists: true
+    contents:
+      - '/^(.*,)?S-1-5-113(,.*)?$/'
+      - '/^(.*,)?S-1-5-32-546(,.*)?$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.2.16
+    {{ end }}
+  {{ end }}
+{{ end }}

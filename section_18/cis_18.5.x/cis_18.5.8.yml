@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_5_8 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\PerformRouterDiscovery:
+    title: "18.5.8 | Ensure 'MSS: (PerformRouterDiscovery) Allow IRDP to detect and configure Default Gateway addresses' is set to 'Disabled' | PerformRouterDiscovery"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.5.8
+  {{ end }}
+{{ end }}

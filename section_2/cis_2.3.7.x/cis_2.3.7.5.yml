@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_7_5 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\LegalNoticeText:
+    title: "2.3.7.5 | Configure 'Interactive logon: Message text for users attempting to log on' | LegalNoticeText"
+    exists: true
+    value:
+      match-regexp: '{{ .Vars.win11cis_legal_notice_match }}'
+    type: REG_SZ
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.7.5
+  {{ end }}
+{{ end }}

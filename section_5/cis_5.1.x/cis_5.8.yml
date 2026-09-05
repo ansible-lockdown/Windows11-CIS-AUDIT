@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_5_8 }}
+file:
+  win11cis_5_8_lltdsvc:
+    title: "5.8 | Ensure 'Link-Layer Topology Discovery Mapper (lltdsvc)' is set to 'Disabled' | lltdsvc"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.lltdsvc'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 5.8
+  {{ end }}
+{{ end }}

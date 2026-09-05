@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_9_20_1_9 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Searchcompanion\DisableContentFileUpdates:
+    title: "18.9.20.1.9 | Ensure 'Turn off Search Companion content file updates' is set to 'Enabled' | DisableContentFileUpdates"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.9.20.1.9
+  {{ end }}
+{{ end }}

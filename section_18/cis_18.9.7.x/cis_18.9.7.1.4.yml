@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_9_7_1_4 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceClasses:
+    title: "18.9.7.1.4 | (BL) Ensure 'Prevent installation of devices using drivers that match these device setup classes' is set to 'Enabled' | DenyDeviceClasses"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.9.7.1.4
+  {{ end }}
+{{ end }}

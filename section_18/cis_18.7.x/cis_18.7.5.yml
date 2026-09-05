@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_7_5 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\RPC\RpcProtocols:
+    title: "18.7.5 | Ensure 'Configure RPC listener settings: Protocols to allow for incoming RPC connections' is set to 'Enabled: RPC over TCP' | RpcProtocols"
+    exists: true
+    value: 5
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.7.5
+  {{ end }}
+{{ end }}

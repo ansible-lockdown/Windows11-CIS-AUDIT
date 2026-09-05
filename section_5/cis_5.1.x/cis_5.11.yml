@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_5_11 }}
+file:
+  win11cis_5_11_msiscsi:
+    title: "5.11 | Ensure 'Microsoft iSCSI Initiator Service (MSiSCSI)' is set to 'Disabled' | MSiSCSI"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.MSiSCSI'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 5.11
+  {{ end }}
+{{ end }}

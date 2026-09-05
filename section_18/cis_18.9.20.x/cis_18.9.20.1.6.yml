@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_9_20_1_6 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoWebServices:
+    title: "18.9.20.1.6 | Ensure 'Turn off Internet download for Web publishing and online ordering wizards' is set to 'Enabled' | NoWebServices"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.20.1.6
+  {{ end }}
+{{ end }}

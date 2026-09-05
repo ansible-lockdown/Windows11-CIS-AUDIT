@@ -1,0 +1,19 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_10_9_2_18 }}
+    {{ if not .Vars.win11cis_domain_joined }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\FVE\UseTPMKeyPIN:
+    title: "18.10.9.2.18 | (BL) Ensure 'Require additional authentication at startup: Configure TPM startup key and PIN:' is set to 'Enabled: Do not allow startup key and PIN with TPM' | UseTPMKeyPIN"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.10.9.2.18
+    {{ end }}
+  {{ end }}
+{{ end }}

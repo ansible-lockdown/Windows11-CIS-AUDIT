@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_8_1_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Biometrics\Facialfeatures\EnhancedAntiSpoofing:
+    title: "18.10.8.1.1 | Ensure 'Configure enhanced anti-spoofing' is set to 'Enabled' | EnhancedAntiSpoofing"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.8.1.1
+  {{ end }}
+{{ end }}

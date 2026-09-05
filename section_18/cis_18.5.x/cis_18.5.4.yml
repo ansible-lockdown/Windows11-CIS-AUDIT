@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_5_4 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Services\RasMan\Parameters\DisableSavePassword:
+    title: "18.5.4 | Ensure 'MSS: (DisableSavePassword) Prevent the dial-up password from being saved' is set to 'Enabled' | DisableSavePassword"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.5.4
+  {{ end }}
+{{ end }}

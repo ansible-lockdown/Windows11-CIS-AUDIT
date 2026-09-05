@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_25_2_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Eventlog\Security\MaxSize:
+    title: "18.10.25.2.2 | Ensure 'Security: Specify the maximum log file size (KB)' is set to 'Enabled: 196,608 or greater' | MaxSize"
+    exists: true
+    value: {{ .Vars.win11cis_security_max_log_file_size }}
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.25.2.2
+  {{ end }}
+{{ end }}

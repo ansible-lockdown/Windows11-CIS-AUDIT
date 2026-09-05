@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_91_2_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\App and Browser protection\DisallowExploitProtectionOverride:
+    title: "18.10.91.2.1 | Ensure 'Prevent users from modifying settings' is set to 'Enabled' | DisallowExploitProtectionOverride"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.91.2.1
+  {{ end }}
+{{ end }}

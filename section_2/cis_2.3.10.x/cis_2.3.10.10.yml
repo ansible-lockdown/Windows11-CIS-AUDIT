@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_10_10 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Control\Lsa\RestrictRemoteSAM:
+    title: "2.3.10.10 | Ensure 'Network access: Restrict clients allowed to make remote calls to SAM' is set to 'Administrators: Remote Access: Allow' | RestrictRemoteSAM"
+    exists: true
+    value: "O:BAG:BAD:(A;;RC;;;BA)"
+    type: REG_SZ
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.10.10
+  {{ end }}
+{{ end }}

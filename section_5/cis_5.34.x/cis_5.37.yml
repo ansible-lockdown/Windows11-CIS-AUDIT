@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_5_37 }}
+file:
+  win11cis_5_37_wpnservice:
+    title: "5.37 | Ensure 'Windows Push Notifications System Service (WpnService)' is set to 'Disabled' | WpnService"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.WpnService'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 5.37
+  {{ end }}
+{{ end }}

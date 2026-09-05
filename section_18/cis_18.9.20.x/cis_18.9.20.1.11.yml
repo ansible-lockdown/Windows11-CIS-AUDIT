@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_9_20_1_11 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoPublishingWizard:
+    title: "18.9.20.1.11 | Ensure 'Turn off the \"Publish to Web\" task for files and folders' is set to 'Enabled' | NoPublishingWizard"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.9.20.1.11
+  {{ end }}
+{{ end }}

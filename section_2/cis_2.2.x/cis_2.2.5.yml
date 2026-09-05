@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_2_5 }}
+file:
+  win11cis_2_2_5_seinteractivelogonright:
+    title: "2.2.5 | Ensure 'Allow log on locally' is set to 'Administrators, Users' | SeInteractiveLogonRight"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeInteractiveLogonRight'
+    exists: true
+    contents:
+      - '/^S-1-5-32-544,S-1-5-32-545$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.2.5
+  {{ end }}
+{{ end }}

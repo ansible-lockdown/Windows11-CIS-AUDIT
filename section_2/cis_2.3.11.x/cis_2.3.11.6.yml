@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_11_6 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters\EnableForcedLogOff:
+    title: "2.3.11.6 | Ensure 'Network security: Force logoff when logon hours expire' is set to 'Enabled' | EnableForcedLogOff"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.11.6
+  {{ end }}
+{{ end }}

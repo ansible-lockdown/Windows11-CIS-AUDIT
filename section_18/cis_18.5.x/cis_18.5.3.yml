@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_5_3 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\DisableIPSourceRouting:
+    title: "18.5.3 | Ensure 'MSS: (DisableIPSourceRouting) IP source routing protection level' is set to 'Enabled: Highest protection, source routing is completely disabled' | DisableIPSourceRouting"
+    exists: true
+    value: 2
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.5.3
+  {{ end }}
+{{ end }}

@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_10_7 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedExactPaths\Machine:
+    title: "2.3.10.7 | Ensure 'Network access: Remotely accessible registry paths' is configured | Machine"
+    exists: true
+    value: "System\\CurrentControlSet\\Control\\ProductOptions\nSystem\\CurrentControlSet\\Control\\Server Applications\nSoftware\\Microsoft\\Windows NT\\CurrentVersion"
+    type: REG_MULTI_SZ
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.10.7
+  {{ end }}
+{{ end }}

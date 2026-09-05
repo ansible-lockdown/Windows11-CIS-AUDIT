@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_77_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR\AllowGameDVR:
+    title: "18.10.77.1 | Ensure 'Enables or disables Windows Game Recording and Broadcasting' is set to 'Disabled' | AllowGameDVR"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.77.1
+  {{ end }}
+{{ end }}

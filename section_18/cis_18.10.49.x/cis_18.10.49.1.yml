@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_10_49_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds\EnableFeeds:
+    title: "18.10.49.1 | Ensure 'Enable news and interests on the taskbar' is set to 'Disabled' | EnableFeeds"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.10.49.1
+  {{ end }}
+{{ end }}

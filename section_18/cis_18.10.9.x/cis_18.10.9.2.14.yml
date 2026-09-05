@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_10_9_2_14 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\FVE\EnableBDEWithNoTPM:
+    title: "18.10.9.2.14 | (BL) Ensure 'Require additional authentication at startup: Allow BitLocker without a compatible TPM' is set to 'Enabled: False' | EnableBDEWithNoTPM"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.10.9.2.14
+  {{ end }}
+{{ end }}

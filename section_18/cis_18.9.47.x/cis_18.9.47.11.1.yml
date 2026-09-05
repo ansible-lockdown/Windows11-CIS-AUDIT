@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_9_47_11_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Wdi\{9C5A40Da-B965-4Fc3-8781-88Dd50A6299D}\ScenarioExecutionEnabled:
+    title: "18.9.47.11.1 | Ensure 'Enable/Disable PerfTrack' is set to 'Disabled' | ScenarioExecutionEnabled"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.9.47.11.1
+  {{ end }}
+{{ end }}

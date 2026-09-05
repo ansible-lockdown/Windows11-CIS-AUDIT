@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_92_2_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoUpdate:
+    title: "18.10.92.2.1 | Ensure 'Configure Automatic Updates' is set to 'Enabled' | NoAutoUpdate"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.92.2.1
+  {{ end }}
+{{ end }}

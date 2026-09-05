@@ -1,0 +1,18 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_1_5 }}
+file:
+  win11cis_2_3_1_5_newguestname:
+    title: "2.3.1.5 | Configure 'Accounts: Rename guest account' | NewGuestName"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\SystemAccess.NewGuestName'
+    exists: true
+    contents:
+      - '/^.+$/'
+      - '!/^Guest$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.1.5
+  {{ end }}
+{{ end }}

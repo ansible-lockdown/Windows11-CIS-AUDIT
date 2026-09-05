@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_10_80_3 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer\SafeForScripting:
+    title: "18.10.80.3 | Ensure 'Prevent Internet Explorer security prompt for Windows Installer scripts' is set to 'Disabled' | SafeForScripting"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.10.80.3
+  {{ end }}
+{{ end }}

@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_10_9_3_6 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\FVE\RDVHideRecoveryPage:
+    title: "18.10.9.3.6 | (BL) Ensure 'Choose how BitLocker-protected removable drives can be recovered: Omit recovery options from the BitLocker setup wizard' is set to 'Enabled: True' | RDVHideRecoveryPage"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.10.9.3.6
+  {{ end }}
+{{ end }}

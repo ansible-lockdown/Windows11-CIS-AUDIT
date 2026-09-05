@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_5_33 }}
+file:
+  win11cis_5_33_wersvc:
+    title: "5.33 | Ensure 'Windows Error Reporting Service (WerSvc)' is set to 'Disabled' | WerSvc"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.WerSvc'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 5.33
+  {{ end }}
+{{ end }}

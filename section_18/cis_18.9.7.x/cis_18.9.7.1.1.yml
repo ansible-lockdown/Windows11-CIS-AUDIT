@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_9_7_1_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceIDs:
+    title: "18.9.7.1.1 | (BL) Ensure 'Prevent installation of devices that match any of these device IDs' is set to 'Enabled' | DenyDeviceIDs"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.9.7.1.1
+  {{ end }}
+{{ end }}

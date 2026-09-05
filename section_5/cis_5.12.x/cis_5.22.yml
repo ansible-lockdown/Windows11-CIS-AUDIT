@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_5_22 }}
+file:
+  win11cis_5_22_umrdpservice:
+    title: "5.22 | Ensure 'Remote Desktop Services UserMode Port Redirector (UmRdpService)' is set to 'Disabled' | UmRdpService"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.UmRdpService'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 5.22
+  {{ end }}
+{{ end }}

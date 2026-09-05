@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_11_8 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Services\Ldap\LDAPClientIntegrity:
+    title: "2.3.11.8 | Ensure 'Network security: LDAP client signing requirements' is set to 'Negotiate signing' or higher | LDAPClientIntegrity"
+    exists: true
+    value: {{ .Vars.win11cis_ldap_client_integrity }}
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.11.8
+  {{ end }}
+{{ end }}

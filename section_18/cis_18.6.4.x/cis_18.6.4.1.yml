@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_6_4_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient\DoHPolicy:
+    title: "18.6.4.1 | Ensure 'Configure DNS over HTTPS (DoH) name resolution' is set to 'Enabled: Allow DoH' or higher | DoHPolicy"
+    exists: true
+    value: {{ .Vars.win11cis_doh_policy }}
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.6.4.1
+  {{ end }}
+{{ end }}

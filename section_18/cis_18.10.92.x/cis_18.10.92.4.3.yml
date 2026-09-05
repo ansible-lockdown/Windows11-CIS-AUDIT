@@ -1,0 +1,25 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_92_4_3 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\DeferQualityUpdates:
+    title: "18.10.92.4.3 | Ensure 'Select when Quality Updates are received' is set to 'Enabled: 0 days' | DeferQualityUpdates"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.92.4.3
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\DeferQualityUpdatesPeriodInDays:
+    title: "18.10.92.4.3 | Ensure 'Select when Quality Updates are received' is set to 'Enabled: 0 days' | DeferQualityUpdatesPeriodInDays"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.92.4.3
+  {{ end }}
+{{ end }}

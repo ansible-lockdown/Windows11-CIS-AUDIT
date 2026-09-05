@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_17_8_1 }}
+file:
+  win11cis_17_8_1_sensitive_privilege_use:
+    title: "17.8.1 | Ensure 'Audit Sensitive Privilege Use' is set to 'Success and Failure' | Sensitive Privilege Use"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\AuditPolicy.17.8.1'
+    exists: true
+    contents:
+      - '/^3$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 17.8.1
+  {{ end }}
+{{ end }}

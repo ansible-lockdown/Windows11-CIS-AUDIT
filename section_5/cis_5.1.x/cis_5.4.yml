@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_5_4 }}
+file:
+  win11cis_5_4_mapsbroker:
+    title: "5.4 | Ensure 'Downloaded Maps Manager (MapsBroker)' is set to 'Disabled' | MapsBroker"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.MapsBroker'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 5.4
+  {{ end }}
+{{ end }}

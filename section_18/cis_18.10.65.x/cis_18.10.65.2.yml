@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_65_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\WindowsStore\RequirePrivateStoreOnly:
+    title: "18.10.65.2 | Ensure 'Only display the private store within the Microsoft Store' is set to 'Enabled' | RequirePrivateStoreOnly"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.65.2
+  {{ end }}
+{{ end }}

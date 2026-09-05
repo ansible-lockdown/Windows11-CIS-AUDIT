@@ -1,0 +1,19 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_5_21 }}
+    {{ if not .Vars.win11cis_win_skip_for_test }}
+file:
+  win11cis_5_21_termservice:
+    title: "5.21 | Ensure 'Remote Desktop Services (TermService)' is set to 'Disabled' | TermService"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.TermService'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 5.21
+    {{ end }}
+  {{ end }}
+{{ end }}

@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_81_1 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\EnableMPR:
+    title: "18.10.81.1 | Ensure 'Enable MPR notifications for the system' is set to 'Disabled' | EnableMPR"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.81.1
+  {{ end }}
+{{ end }}

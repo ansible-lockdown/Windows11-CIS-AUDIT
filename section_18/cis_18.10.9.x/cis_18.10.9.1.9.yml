@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_10_9_1_9 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\FVE\FDVRequireActiveDirectoryBackup:
+    title: "18.10.9.1.9 | (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Do not enable BitLocker until recovery information is stored to AD DS for fixed data drives' is set to 'Enabled: False' | FDVRequireActiveDirectoryBackup"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.10.9.1.9
+  {{ end }}
+{{ end }}

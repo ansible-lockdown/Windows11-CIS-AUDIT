@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_4_1 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\LocalAccountTokenFilterPolicy:
+    title: "18.4.1 | Ensure 'Apply UAC restrictions to local accounts on network logons' is set to 'Enabled' | LocalAccountTokenFilterPolicy"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.4.1
+  {{ end }}
+{{ end }}

@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_17_3_1 }}
+file:
+  win11cis_17_3_1_plug_and_play_events:
+    title: "17.3.1 | Ensure 'Audit PNP Activity' is set to include 'Success' | Plug and Play Events"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\AuditPolicy.17.3.1'
+    exists: true
+    contents:
+      - '/^[13]$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 17.3.1
+  {{ end }}
+{{ end }}

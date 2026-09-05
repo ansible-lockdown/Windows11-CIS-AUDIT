@@ -1,0 +1,18 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_1_4 }}
+file:
+  win11cis_2_3_1_4_newadministratorname:
+    title: "2.3.1.4 | Configure 'Accounts: Rename administrator account' | NewAdministratorName"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\SystemAccess.NewAdministratorName'
+    exists: true
+    contents:
+      - '/^.+$/'
+      - '!/^Administrator$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.1.4
+  {{ end }}
+{{ end }}

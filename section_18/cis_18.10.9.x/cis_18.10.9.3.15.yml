@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_10_9_3_15 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\FVE\RDVDenyCrossOrg:
+    title: "18.10.9.3.15 | (BL) Ensure 'Deny write access to removable drives not protected by BitLocker: Do not allow write access to devices configured in another organization' is set to 'Enabled: False' | RDVDenyCrossOrg"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.10.9.3.15
+  {{ end }}
+{{ end }}

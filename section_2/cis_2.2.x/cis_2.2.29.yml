@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_2_2_29 }}
+file:
+  win11cis_2_2_29_seservicelogonright:
+    title: "2.2.29 | Configure 'Log on as a service' | SeServiceLogonRight"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeServiceLogonRight'
+    exists: true
+    contents:
+      - '/^{{ .Vars.win11cis_seservicelogonright_expected }}$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 2.2.29
+  {{ end }}
+{{ end }}

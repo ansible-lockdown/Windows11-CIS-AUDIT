@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_9_20_1_3 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Tabletpc\PreventHandwritingDataSharing:
+    title: "18.9.20.1.3 | Ensure 'Turn off handwriting personalization data sharing' is set to 'Enabled' | PreventHandwritingDataSharing"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.9.20.1.3
+  {{ end }}
+{{ end }}

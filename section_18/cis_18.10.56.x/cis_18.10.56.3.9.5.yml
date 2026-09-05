@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_56_3_9_5 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\MinEncryptionLevel:
+    title: "18.10.56.3.9.5 | Ensure 'Set client connection encryption level' is set to 'Enabled: High Level' | MinEncryptionLevel"
+    exists: true
+    value: 3
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.56.3.9.5
+  {{ end }}
+{{ end }}

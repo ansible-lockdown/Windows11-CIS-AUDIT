@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_56_2_3 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\DisablePasswordSaving:
+    title: "18.10.56.2.3 | Ensure 'Do not allow passwords to be saved' is set to 'Enabled' | DisablePasswordSaving"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.56.2.3
+  {{ end }}
+{{ end }}

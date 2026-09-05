@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_9_13_1 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Policies\Earlylaunch\DriverLoadPolicy:
+    title: "18.9.13.1 | Ensure 'Boot-Start Driver Initialization Policy' is set to 'Enabled: Good, unknown and bad but critical' | DriverLoadPolicy"
+    exists: true
+    value: 3
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.13.1
+  {{ end }}
+{{ end }}

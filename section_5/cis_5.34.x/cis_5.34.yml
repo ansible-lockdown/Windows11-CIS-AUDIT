@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_5_34 }}
+file:
+  win11cis_5_34_wecsvc:
+    title: "5.34 | Ensure 'Windows Event Collector (Wecsvc)' is set to 'Disabled' | Wecsvc"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.Wecsvc'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 5.34
+  {{ end }}
+{{ end }}

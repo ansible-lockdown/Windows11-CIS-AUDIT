@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_5_1 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\MSAOptional:
+    title: "18.10.5.1 | Ensure 'Allow Microsoft accounts to be optional' is set to 'Enabled' | MSAOptional"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.5.1
+  {{ end }}
+{{ end }}

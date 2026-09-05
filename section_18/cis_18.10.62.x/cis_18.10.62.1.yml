@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_10_62_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform\NoGenTicket:
+    title: "18.10.62.1 | Ensure 'Turn off KMS Client Online AVS Validation' is set to 'Enabled' | NoGenTicket"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.10.62.1
+  {{ end }}
+{{ end }}

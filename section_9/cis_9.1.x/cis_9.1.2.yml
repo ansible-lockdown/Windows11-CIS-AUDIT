@@ -1,0 +1,27 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_9_1_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\DefaultInboundAction:
+    title: "9.1.2 | Ensure 'Windows Firewall: Domain: Inbound connections' is set to 'Block (default)' | DefaultInboundAction"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 9.1.2
+file:
+  win11cis_9_1_2_effective:
+    title: "9.1.2 | Ensure 'Windows Firewall: Domain: Inbound connections' is set to 'Block (default)' | effective"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Firewall.Domain.DefaultInboundAction'
+    exists: true
+    contents:
+      - '/^Block$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 9.1.2
+  {{ end }}
+{{ end }}

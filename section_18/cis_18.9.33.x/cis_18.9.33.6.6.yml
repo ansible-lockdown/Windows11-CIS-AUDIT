@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_9_33_6_6 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51\ACSettingIndex:
+    title: "18.9.33.6.6 | Ensure 'Require a password when a computer wakes (plugged in)' is set to 'Enabled' | ACSettingIndex"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.33.6.6
+  {{ end }}
+{{ end }}

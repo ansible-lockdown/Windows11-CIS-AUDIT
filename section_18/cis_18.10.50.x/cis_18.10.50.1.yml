@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_50_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Onedrive\DisableFileSyncNGSC:
+    title: "18.10.50.1 | Ensure 'Prevent the usage of OneDrive for file storage' is set to 'Enabled' | DisableFileSyncNGSC"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.50.1
+  {{ end }}
+{{ end }}

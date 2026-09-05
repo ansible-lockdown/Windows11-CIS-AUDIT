@@ -1,0 +1,27 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_9_2_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\DefaultInboundAction:
+    title: "9.2.2 | Ensure 'Windows Firewall: Private: Inbound connections' is set to 'Block (default)' | DefaultInboundAction"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 9.2.2
+file:
+  win11cis_9_2_2_effective:
+    title: "9.2.2 | Ensure 'Windows Firewall: Private: Inbound connections' is set to 'Block (default)' | effective"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Firewall.Private.DefaultInboundAction'
+    exists: true
+    contents:
+      - '/^Block$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 9.2.2
+  {{ end }}
+{{ end }}

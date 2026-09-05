@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_28_4 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer\NoHeapTerminationOnCorruption:
+    title: "18.10.28.4 | Ensure 'Turn off heap termination on corruption' is set to 'Disabled' | NoHeapTerminationOnCorruption"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.28.4
+  {{ end }}
+{{ end }}

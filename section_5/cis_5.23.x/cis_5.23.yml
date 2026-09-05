@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_5_23 }}
+file:
+  win11cis_5_23_rpclocator:
+    title: "5.23 | Ensure 'Remote Procedure Call (RPC) Locator (RpcLocator)' is set to 'Disabled' | RpcLocator"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.RpcLocator'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 5.23
+  {{ end }}
+{{ end }}

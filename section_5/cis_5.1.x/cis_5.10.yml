@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_5_10 }}
+file:
+  win11cis_5_10_ftpsvc:
+    title: "5.10 | Ensure 'Microsoft FTP Service (FTPSVC)' is set to 'Disabled' or 'Not Installed' | FTPSVC"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.FTPSVC'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 5.10
+  {{ end }}
+{{ end }}

@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_9_28_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\System\BlockUserFromShowingAccountDetailsOnSignin:
+    title: "18.9.28.1 | Ensure 'Block user from showing account details on sign-in' is set to 'Enabled' | BlockUserFromShowingAccountDetailsOnSignin"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.28.1
+  {{ end }}
+{{ end }}

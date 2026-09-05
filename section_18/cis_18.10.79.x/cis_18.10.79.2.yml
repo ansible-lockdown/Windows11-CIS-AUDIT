@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_79_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace\AllowWindowsInkWorkspace:
+    title: "18.10.79.2 | Ensure 'Allow Windows Ink Workspace' is set to 'Enabled: On, but disallow access above lock' OR 'Enabled: Disabled' | AllowWindowsInkWorkspace"
+    exists: true
+    value: {{ .Vars.win11cis_allow_windows_ink_workspace }}
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.79.2
+  {{ end }}
+{{ end }}

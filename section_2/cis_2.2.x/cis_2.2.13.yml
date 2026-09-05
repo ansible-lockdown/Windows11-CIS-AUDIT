@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_2_13 }}
+file:
+  win11cis_2_2_13_secreatepermanentprivilege:
+    title: "2.2.13 | Ensure 'Create permanent shared objects' is set to 'No One' | SeCreatePermanentPrivilege"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeCreatePermanentPrivilege'
+    exists: true
+    contents:
+      - '/^NONE$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.2.13
+  {{ end }}
+{{ end }}

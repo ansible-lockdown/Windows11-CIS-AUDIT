@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_4_4 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters\SMB1:
+    title: "18.4.4 | Ensure 'Configure SMB v1 server' is set to 'Disabled' | SMB1"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.4.4
+  {{ end }}
+{{ end }}

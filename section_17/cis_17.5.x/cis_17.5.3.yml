@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_17_5_3 }}
+file:
+  win11cis_17_5_3_logoff:
+    title: "17.5.3 | Ensure 'Audit Logoff' is set to include 'Success' | Logoff"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\AuditPolicy.17.5.3'
+    exists: true
+    contents:
+      - '/^[13]$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 17.5.3
+  {{ end }}
+{{ end }}

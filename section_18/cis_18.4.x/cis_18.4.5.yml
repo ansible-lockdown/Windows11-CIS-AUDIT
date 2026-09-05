@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_4_5 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Cryptography\Wintrust\Config\EnableCertPaddingCheck:
+    title: "18.4.5 | Ensure 'Enable Certificate Padding' is set to 'Enabled' | EnableCertPaddingCheck"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.4.5
+  {{ end }}
+{{ end }}

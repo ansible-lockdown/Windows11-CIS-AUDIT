@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_2_2 }}
+file:
+  win11cis_2_2_2_senetworklogonright:
+    title: "2.2.2 | Ensure 'Access this computer from the network' is set to 'Administrators, Remote Desktop Users' | SeNetworkLogonRight"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeNetworkLogonRight'
+    exists: true
+    contents:
+      - '/^S-1-5-32-544,S-1-5-32-555$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.2.2
+  {{ end }}
+{{ end }}

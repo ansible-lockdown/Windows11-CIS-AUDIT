@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_5_28 }}
+file:
+  win11cis_5_28_snmp:
+    title: "5.28 | Ensure 'SNMP Service (SNMP)' is set to 'Disabled' or 'Not Installed' | SNMP"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.SNMP'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 5.28
+  {{ end }}
+{{ end }}

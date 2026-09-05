@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_17_3_2 }}
+file:
+  win11cis_17_3_2_process_creation:
+    title: "17.3.2 | Ensure 'Audit Process Creation' is set to include 'Success' | Process Creation"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\AuditPolicy.17.3.2'
+    exists: true
+    contents:
+      - '/^[13]$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 17.3.2
+  {{ end }}
+{{ end }}

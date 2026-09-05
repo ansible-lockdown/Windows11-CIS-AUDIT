@@ -1,0 +1,43 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_6_9_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Lltd\AllowLLTDIOOndomain:
+    title: "18.6.9.1 | Ensure 'Turn on Mapper I/O (LLTDIO) driver' is set to 'Disabled' | AllowLLTDIOOndomain"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.6.9.1
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Lltd\AllowLLTDIOOnPublicNet:
+    title: "18.6.9.1 | Ensure 'Turn on Mapper I/O (LLTDIO) driver' is set to 'Disabled' | AllowLLTDIOOnPublicNet"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.6.9.1
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Lltd\EnableLLTDIO:
+    title: "18.6.9.1 | Ensure 'Turn on Mapper I/O (LLTDIO) driver' is set to 'Disabled' | EnableLLTDIO"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.6.9.1
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Lltd\ProhibitLLTDIOOnPrivateNet:
+    title: "18.6.9.1 | Ensure 'Turn on Mapper I/O (LLTDIO) driver' is set to 'Disabled' | ProhibitLLTDIOOnPrivateNet"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.6.9.1
+  {{ end }}
+{{ end }}

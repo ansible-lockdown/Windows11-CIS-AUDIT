@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_75_1_4 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\WTDS\Components\NotifyUnsafeApp:
+    title: "18.10.75.1.4 | Ensure 'Notify Unsafe App' is set to 'Enabled' | NotifyUnsafeApp"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.75.1.4
+  {{ end }}
+{{ end }}

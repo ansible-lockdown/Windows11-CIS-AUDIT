@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_17_5_5 }}
+file:
+  win11cis_17_5_5_other_logon_logoff_events:
+    title: "17.5.5 | Ensure 'Audit Other Logon/Logoff Events' is set to 'Success and Failure' | Other Logon/Logoff Events"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\AuditPolicy.17.5.5'
+    exists: true
+    contents:
+      - '/^3$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 17.5.5
+  {{ end }}
+{{ end }}

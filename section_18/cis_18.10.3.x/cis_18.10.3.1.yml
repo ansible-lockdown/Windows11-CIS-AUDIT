@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_10_3_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Appmodel\Statemanager\AllowSharedLocalAppData:
+    title: "18.10.3.1 | Ensure 'Allow a Windows app to share application data between users' is set to 'Disabled' | AllowSharedLocalAppData"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.10.3.1
+  {{ end }}
+{{ end }}

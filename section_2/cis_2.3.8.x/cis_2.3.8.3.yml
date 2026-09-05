@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_8_3 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Services\Lanmanworkstation\Parameters\EnablePlainTextPassword:
+    title: "2.3.8.3 | Ensure 'Microsoft network client: Send unencrypted password to third-party SMB servers' is set to 'Disabled' | EnablePlainTextPassword"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.8.3
+  {{ end }}
+{{ end }}

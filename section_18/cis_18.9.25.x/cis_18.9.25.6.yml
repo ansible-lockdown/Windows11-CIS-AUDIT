@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_9_25_6 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\LAPS\PasswordAgeDays:
+    title: "18.9.25.6 | Ensure 'Password Settings: Password Age (Days)' is set to 'Enabled: 30 or fewer' | PasswordAgeDays"
+    exists: true
+    value: {{ .Vars.win11cis_laps_password_age }}
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.25.6
+  {{ end }}
+{{ end }}

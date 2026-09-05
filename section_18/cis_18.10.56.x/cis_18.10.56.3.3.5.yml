@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_10_56_3_3_5 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fDisableLPT:
+    title: "18.10.56.3.3.5 | Ensure 'Do not allow LPT port redirection' is set to 'Enabled' | fDisableLPT"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.10.56.3.3.5
+  {{ end }}
+{{ end }}

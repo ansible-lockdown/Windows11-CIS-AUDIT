@@ -1,0 +1,30 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_11_4 }}
+    {{ if .Vars.win11cis_legacy_rc4_hmac_md5_support }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters\SupportedEncryptionTypes:
+    title: "2.3.11.4 | Ensure 'Network security: Configure encryption types allowed for Kerberos' is set to 'AES128_HMAC_SHA1, AES256_HMAC_SHA1, Future encryption types' | SupportedEncryptionTypes"
+    exists: true
+    value: 2147483644
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.11.4
+    {{ end }}
+    {{ if not .Vars.win11cis_legacy_rc4_hmac_md5_support }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters\SupportedEncryptionTypes:
+    title: "2.3.11.4 | Ensure 'Network security: Configure encryption types allowed for Kerberos' is set to 'AES128_HMAC_SHA1, AES256_HMAC_SHA1, Future encryption types' | SupportedEncryptionTypes"
+    exists: true
+    value: 2147483640
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.11.4
+    {{ end }}
+  {{ end }}
+{{ end }}

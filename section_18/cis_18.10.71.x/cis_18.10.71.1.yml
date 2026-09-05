@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_71_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Dsh\AllowNewsAndInterests:
+    title: "18.10.71.1 | Ensure 'Allow widgets' is set to 'Disabled' | AllowNewsAndInterests"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.71.1
+  {{ end }}
+{{ end }}

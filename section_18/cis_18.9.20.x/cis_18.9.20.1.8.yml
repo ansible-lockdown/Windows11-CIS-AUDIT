@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_9_20_1_8 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Registration Wizard Control\NoRegistration:
+    title: "18.9.20.1.8 | Ensure 'Turn off Registration if URL connection is referring to Microsoft.com' is set to 'Enabled' | NoRegistration"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.9.20.1.8
+  {{ end }}
+{{ end }}

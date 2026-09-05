@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_7_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer\NoAutoplayfornonVolume:
+    title: "18.10.7.1 | Ensure 'Disallow Autoplay for non-volume devices' is set to 'Enabled' | NoAutoplayfornonVolume"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.7.1
+  {{ end }}
+{{ end }}

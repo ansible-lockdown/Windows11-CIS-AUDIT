@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_9_25_2 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\LAPS\PwdExpirationProtectionEnabled:
+    title: "18.9.25.2 | Ensure 'Do not allow password expiration time longer than required by policy' is set to 'Enabled' | PwdExpirationProtectionEnabled"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.25.2
+  {{ end }}
+{{ end }}

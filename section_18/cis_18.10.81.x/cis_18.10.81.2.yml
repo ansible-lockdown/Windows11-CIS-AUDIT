@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_81_2 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\DisableAutomaticRestartSignOn:
+    title: "18.10.81.2 | Ensure 'Sign-in and lock last interactive user automatically after a restart' is set to 'Disabled' | DisableAutomaticRestartSignOn"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.81.2
+  {{ end }}
+{{ end }}

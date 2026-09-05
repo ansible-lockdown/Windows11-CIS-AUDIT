@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_5_13 }}
+file:
+  win11cis_5_13_pnrpsvc:
+    title: "5.13 | Ensure 'Peer Name Resolution Protocol (PNRPsvc)' is set to 'Disabled' | PNRPsvc"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.PNRPsvc'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 5.13
+  {{ end }}
+{{ end }}

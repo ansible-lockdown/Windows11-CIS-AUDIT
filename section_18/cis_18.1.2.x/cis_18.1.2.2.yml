@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_1_2_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\InputPersonalization\AllowInputPersonalization:
+    title: "18.1.2.2 | Ensure 'Allow users to enable online speech recognition services' is set to 'Disabled' | AllowInputPersonalization"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.1.2.2
+  {{ end }}
+{{ end }}

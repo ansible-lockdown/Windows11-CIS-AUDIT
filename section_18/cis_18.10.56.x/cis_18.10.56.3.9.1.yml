@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_56_3_9_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fPromptForPassword:
+    title: "18.10.56.3.9.1 | Ensure 'Always prompt for password upon connection' is set to 'Enabled' | fPromptForPassword"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.56.3.9.1
+  {{ end }}
+{{ end }}

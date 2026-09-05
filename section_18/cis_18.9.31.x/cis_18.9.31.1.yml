@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_9_31_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\System\AllowCrossDeviceClipboard:
+    title: "18.9.31.1 | Ensure 'Allow Clipboard synchronization across devices' is set to 'Disabled' | AllowCrossDeviceClipboard"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.9.31.1
+  {{ end }}
+{{ end }}

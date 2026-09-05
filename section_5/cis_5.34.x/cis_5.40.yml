@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_5_40 }}
+file:
+  win11cis_5_40_w3svc:
+    title: "5.40 | Ensure 'World Wide Web Publishing Service (W3SVC)' is set to 'Disabled' or 'Not Installed' | W3SVC"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.W3SVC'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 5.40
+  {{ end }}
+{{ end }}

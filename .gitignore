@@ -1,0 +1,55 @@
+.env
+*.log
+*.retry
+.cache
+.vagrant
+tests/*redhat-subscription
+tests/Dockerfile
+*.iso
+*.box
+packer_cache
+delete*
+ignore*
+# VSCode
+.vscode
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# DS_Store
+.DS_Store
+._*
+
+# Linux Editors
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+.\#*
+*.swp
+*.swo
+rh-creds.env
+travis.env
+
+# Lockdown-specific
+benchparse/
+*xccdf.xml
+*.retry
+
+# GitHub Action/Workflow files
+.github/
+
+# Windows audit
+# syver.exe is pre-staged on the host, never committed
+*.exe
+# audit output and the policy snapshot the collector writes
+audit_*.json
+audit_*.txt
+win11cis_policy_snapshot.txt
+# candidate regenerations of hand-edited spec files
+.regen/

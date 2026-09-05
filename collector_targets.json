@@ -1,0 +1,334 @@
+{
+  "auditpol": [
+    {
+      "rule": "17.1.1",
+      "subcategory": "Credential Validation"
+    },
+    {
+      "rule": "17.2.1",
+      "subcategory": "Application Group Management"
+    },
+    {
+      "rule": "17.2.2",
+      "subcategory": "Security Group Management"
+    },
+    {
+      "rule": "17.2.3",
+      "subcategory": "User Account Management"
+    },
+    {
+      "rule": "17.3.1",
+      "subcategory": "Plug and Play Events"
+    },
+    {
+      "rule": "17.3.2",
+      "subcategory": "Process Creation"
+    },
+    {
+      "rule": "17.5.1",
+      "subcategory": "Account Lockout"
+    },
+    {
+      "rule": "17.5.2",
+      "subcategory": "Group Membership"
+    },
+    {
+      "rule": "17.5.3",
+      "subcategory": "Logoff"
+    },
+    {
+      "rule": "17.5.4",
+      "subcategory": "Logon"
+    },
+    {
+      "rule": "17.5.5",
+      "subcategory": "Other Logon/Logoff Events"
+    },
+    {
+      "rule": "17.5.6",
+      "subcategory": "Special Logon"
+    },
+    {
+      "rule": "17.6.1",
+      "subcategory": "Detailed File Share"
+    },
+    {
+      "rule": "17.6.2",
+      "subcategory": "File Share"
+    },
+    {
+      "rule": "17.6.3",
+      "subcategory": "Other Object Access Events"
+    },
+    {
+      "rule": "17.6.4",
+      "subcategory": "Removable Storage"
+    },
+    {
+      "rule": "17.7.1",
+      "subcategory": "Audit Policy Change"
+    },
+    {
+      "rule": "17.7.2",
+      "subcategory": "Authentication Policy Change"
+    },
+    {
+      "rule": "17.7.3",
+      "subcategory": "Authorization Policy Change"
+    },
+    {
+      "rule": "17.7.4",
+      "subcategory": "MPSSVC Rule-Level Policy Change"
+    },
+    {
+      "rule": "17.7.5",
+      "subcategory": "Other Policy Change Events"
+    },
+    {
+      "rule": "17.8.1",
+      "subcategory": "Sensitive Privilege Use"
+    },
+    {
+      "rule": "17.9.1",
+      "subcategory": "IPsec Driver"
+    },
+    {
+      "rule": "17.9.2",
+      "subcategory": "Other System Events"
+    },
+    {
+      "rule": "17.9.3",
+      "subcategory": "Security State Change"
+    },
+    {
+      "rule": "17.9.4",
+      "subcategory": "Security System Extension"
+    },
+    {
+      "rule": "17.9.5",
+      "subcategory": "System Integrity"
+    }
+  ],
+  "firewall": [
+    {
+      "profile": "Domain",
+      "property": "Enabled"
+    },
+    {
+      "profile": "Domain",
+      "property": "DefaultInboundAction"
+    },
+    {
+      "profile": "Private",
+      "property": "Enabled"
+    },
+    {
+      "profile": "Private",
+      "property": "DefaultInboundAction"
+    },
+    {
+      "profile": "Public",
+      "property": "Enabled"
+    },
+    {
+      "profile": "Public",
+      "property": "DefaultInboundAction"
+    }
+  ],
+  "hku": [
+    {
+      "data": 1,
+      "name": "NoToastApplicationNotificationOnLockScreen",
+      "rule": "19.5.1.1",
+      "subpath": "SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\PushNotifications",
+      "type": "REG_DWORD"
+    },
+    {
+      "data": 1,
+      "name": "NoImplicitFeedback",
+      "rule": "19.6.6.1.1",
+      "subpath": "SOFTWARE\\Policies\\Microsoft\\Assistance\\Client\\1.0",
+      "type": "REG_DWORD"
+    },
+    {
+      "data": 2,
+      "name": "SaveZoneInformation",
+      "rule": "19.7.5.1",
+      "subpath": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments",
+      "type": "REG_DWORD"
+    },
+    {
+      "data": 3,
+      "name": "ScanWithAntiVirus",
+      "rule": "19.7.5.2",
+      "subpath": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Attachments",
+      "type": "REG_DWORD"
+    },
+    {
+      "data": 2,
+      "name": "ConfigureWindowsSpotlight",
+      "rule": "19.7.8.1",
+      "subpath": "SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
+      "type": "REG_DWORD"
+    },
+    {
+      "data": 1,
+      "name": "DisableThirdPartySuggestions",
+      "rule": "19.7.8.2",
+      "subpath": "SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
+      "type": "REG_DWORD"
+    },
+    {
+      "data": 1,
+      "name": "DisableTailoredExperiencesWithDiagnosticData",
+      "rule": "19.7.8.3",
+      "subpath": "SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
+      "type": "REG_DWORD"
+    },
+    {
+      "data": 1,
+      "name": "DisableWindowsSpotlightFeatures",
+      "rule": "19.7.8.4",
+      "subpath": "SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
+      "type": "REG_DWORD"
+    },
+    {
+      "data": 1,
+      "name": "DisableSpotlightCollectionOnDesktop",
+      "rule": "19.7.8.5",
+      "subpath": "SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
+      "type": "REG_DWORD"
+    },
+    {
+      "data": 1,
+      "name": "NoInplaceSharing",
+      "rule": "19.7.26.1",
+      "subpath": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+      "type": "REG_DWORD"
+    },
+    {
+      "data": 1,
+      "name": "TurnOffWindowsCopilot",
+      "rule": "19.7.38.1",
+      "subpath": "SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsCopilot",
+      "type": "REG_DWORD"
+    },
+    {
+      "data": 0,
+      "name": "AlwaysInstallElevated",
+      "rule": "19.7.42.1",
+      "subpath": "SOFTWARE\\Policies\\Microsoft\\Windows\\Installer",
+      "type": "REG_DWORD"
+    },
+    {
+      "data": 1,
+      "name": "PreventCodecDownload",
+      "rule": "19.7.44.2.1",
+      "subpath": "SOFTWARE\\Policies\\Microsoft\\WindowsMediaPlayer",
+      "type": "REG_DWORD"
+    }
+  ],
+  "privilege_rights": [
+    "SeAssignPrimaryTokenPrivilege",
+    "SeAuditPrivilege",
+    "SeBackupPrivilege",
+    "SeBatchLogonRight",
+    "SeCreateGlobalPrivilege",
+    "SeCreatePagefilePrivilege",
+    "SeCreatePermanentPrivilege",
+    "SeCreateSymbolicLinkPrivilege",
+    "SeCreateTokenPrivilege",
+    "SeDebugPrivilege",
+    "SeDenyBatchLogonRight",
+    "SeDenyInteractiveLogonRight",
+    "SeDenyNetworkLogonRight",
+    "SeDenyRemoteInteractiveLogonRight",
+    "SeDenyServiceLogonRight",
+    "SeEnableDelegationPrivilege",
+    "SeImpersonatePrivilege",
+    "SeIncreaseBasePriorityPrivilege",
+    "SeIncreaseQuotaPrivilege",
+    "SeInteractiveLogonRight",
+    "SeLoadDriverPrivilege",
+    "SeLockMemoryPrivilege",
+    "SeManageVolumePrivilege",
+    "SeNetworkLogonRight",
+    "SeProfileSingleProcessPrivilege",
+    "SeRelabelPrivilege",
+    "SeRemoteInteractiveLogonRight",
+    "SeRemoteShutdownPrivilege",
+    "SeRestorePrivilege",
+    "SeSecurityPrivilege",
+    "SeServiceLogonRight",
+    "SeShutdownPrivilege",
+    "SeSystemEnvironmentPrivilege",
+    "SeSystemProfilePrivilege",
+    "SeSystemTimePrivilege",
+    "SeTakeOwnershipPrivilege",
+    "SeTcbPrivilege",
+    "SeTimeZonePrivilege",
+    "SeTrustedCredManAccessPrivilege"
+  ],
+  "services": [
+    "BTAGService",
+    "Browser",
+    "FTPSVC",
+    "LanmanServer",
+    "LxssManager",
+    "MSiSCSI",
+    "MapsBroker",
+    "PNRPAutoReg",
+    "PNRPsvc",
+    "PushToInstall",
+    "RasAuto",
+    "RemoteAccess",
+    "RemoteRegistry",
+    "RpcLocator",
+    "SNMP",
+    "SSDPSRV",
+    "SessionEnv",
+    "Spooler",
+    "TermService",
+    "UmRdpService",
+    "W3SVC",
+    "WMPNetworkSvc",
+    "WMSvc",
+    "Wecsvc",
+    "WerSvc",
+    "WinRM",
+    "WpnService",
+    "XblAuthManager",
+    "XblGameSave",
+    "XboxGipSvc",
+    "XboxNetApiSvc",
+    "bthserv",
+    "icssvc",
+    "iisadmin",
+    "irmon",
+    "lfsvc",
+    "lltdsvc",
+    "p2pimsvc",
+    "p2psvc",
+    "sacsvr",
+    "simptcp",
+    "sshd",
+    "upnphost",
+    "wercplsupport"
+  ],
+  "system_access": [
+    "AllowAdministratorLockout",
+    "ClearTextPassword",
+    "EnableGuestAccount",
+    "LSAAnonymousNameLookup",
+    "LockoutBadCount",
+    "LockoutDuration",
+    "MaximumPasswordAge",
+    "MinimumPasswordAge",
+    "MinimumPasswordLength",
+    "NewAdministratorName",
+    "NewGuestName",
+    "PasswordComplexity",
+    "PasswordHistorySize",
+    "ResetLockoutCount"
+  ]
+}

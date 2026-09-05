@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_10_65_5 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\WindowsStore\RemoveWindowsStore:
+    title: "18.10.65.5 | Ensure 'Turn off the Store application' is set to 'Enabled' | RemoveWindowsStore"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.10.65.5
+  {{ end }}
+{{ end }}

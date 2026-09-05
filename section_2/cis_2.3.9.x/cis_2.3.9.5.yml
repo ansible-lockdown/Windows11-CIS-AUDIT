@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_9_5 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters\SMBServerNameHardeningLevel:
+    title: "2.3.9.5 | Ensure 'Microsoft network server: Server SPN target name validation level' is set to 'Accept if provided by client' or higher | SMBServerNameHardeningLevel"
+    exists: true
+    value: {{ .Vars.win11cis_smb_server_name_hardening_level }}
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.9.5
+  {{ end }}
+{{ end }}

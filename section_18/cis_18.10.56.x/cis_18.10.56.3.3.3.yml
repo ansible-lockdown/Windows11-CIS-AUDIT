@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_56_3_3_3 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fDisableCdm:
+    title: "18.10.56.3.3.3 | Ensure 'Do not allow drive redirection' is set to 'Enabled' | fDisableCdm"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.56.3.3.3
+  {{ end }}
+{{ end }}

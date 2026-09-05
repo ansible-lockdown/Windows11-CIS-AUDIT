@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_42_17 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\DisableAntiSpyware:
+    title: "18.10.42.17 | Ensure 'Turn off Microsoft Defender AntiVirus' is set to 'Disabled' | DisableAntiSpyware"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.42.17
+  {{ end }}
+{{ end }}

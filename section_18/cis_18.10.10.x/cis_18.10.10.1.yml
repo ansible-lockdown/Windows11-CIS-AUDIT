@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_10_10_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Camera\AllowCamera:
+    title: "18.10.10.1 | Ensure 'Allow Use of Camera' is set to 'Disabled' | AllowCamera"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.10.10.1
+  {{ end }}
+{{ end }}

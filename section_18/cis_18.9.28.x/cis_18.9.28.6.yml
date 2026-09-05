@@ -1,0 +1,18 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_9_28_6 }}
+    {{ if .Vars.win11cis_domain_joined }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\System\BlockDomainPicturePassword:
+    title: "18.9.28.6 | Ensure 'Turn off picture password sign-in' is set to 'Enabled' | BlockDomainPicturePassword"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.28.6
+    {{ end }}
+  {{ end }}
+{{ end }}

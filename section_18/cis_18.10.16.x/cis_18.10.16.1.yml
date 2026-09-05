@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_16_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization\DODownloadMode:
+    title: "18.10.16.1 | Ensure 'Download Mode' is NOT set to 'Enabled: Internet' | DODownloadMode"
+    exists: true
+    value: {{ .Vars.win11cis_do_download_mode }}
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.16.1
+  {{ end }}
+{{ end }}

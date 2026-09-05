@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_5_42 }}
+file:
+  win11cis_5_42_xblauthmanager:
+    title: "5.42 | Ensure 'Xbox Live Auth Manager (XblAuthManager)' is set to 'Disabled' | XblAuthManager"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.XblAuthManager'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 5.42
+  {{ end }}
+{{ end }}

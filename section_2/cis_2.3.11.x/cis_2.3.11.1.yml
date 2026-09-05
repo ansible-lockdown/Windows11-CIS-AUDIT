@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_11_1 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Control\Lsa\UseMachineId:
+    title: "2.3.11.1 | Ensure 'Network security: Allow Local System to use computer identity for NTLM' is set to 'Enabled' | UseMachineId"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.11.1
+  {{ end }}
+{{ end }}

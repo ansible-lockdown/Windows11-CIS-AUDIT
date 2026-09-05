@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_4_2 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Control\Print\RpcAuthnLevelPrivacyEnabled:
+    title: "18.4.2 | Ensure 'Configure RPC packet level privacy setting for incoming connections' is set to 'Enabled' | RpcAuthnLevelPrivacyEnabled"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.4.2
+  {{ end }}
+{{ end }}

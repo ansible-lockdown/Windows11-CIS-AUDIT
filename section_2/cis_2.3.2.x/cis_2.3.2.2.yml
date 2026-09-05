@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_2_2 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Control\Lsa\CrashOnAuditFail:
+    title: "2.3.2.2 | Ensure 'Audit: Shut down system immediately if unable to log security audits' is set to 'Disabled' | CrashOnAuditFail"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.2.2
+  {{ end }}
+{{ end }}

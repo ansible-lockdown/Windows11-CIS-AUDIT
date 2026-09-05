@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_92_2_4 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\SetDisablePauseUXAccess:
+    title: "18.10.92.2.4 | Ensure 'Remove access to “Pause updates” feature' is set to 'Enabled' | SetDisablePauseUXAccess"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.92.2.4
+  {{ end }}
+{{ end }}

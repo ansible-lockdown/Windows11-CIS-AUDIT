@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_9_51_1_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\W32Time\Timeproviders\Ntpserver\Enabled:
+    title: "18.9.51.1.2 | Ensure 'Enable Windows NTP Server' is set to 'Disabled' | Enabled"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.51.1.2
+  {{ end }}
+{{ end }}

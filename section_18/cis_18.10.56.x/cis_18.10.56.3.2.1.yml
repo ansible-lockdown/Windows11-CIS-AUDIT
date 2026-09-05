@@ -1,0 +1,18 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_10_56_3_2_1 }}
+    {{ if not .Vars.win11cis_win_skip_for_test }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fDenyTSConnections:
+    title: "18.10.56.3.2.1 | Ensure 'Allow users to connect remotely by using Remote Desktop Services' is set to 'Disabled' | fDenyTSConnections"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.10.56.3.2.1
+    {{ end }}
+  {{ end }}
+{{ end }}

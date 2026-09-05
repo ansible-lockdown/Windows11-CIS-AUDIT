@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_2_3 }}
+file:
+  win11cis_2_2_3_setcbprivilege:
+    title: "2.2.3 | Ensure 'Act as part of the operating system' is set to 'No One' | SeTcbPrivilege"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeTcbPrivilege'
+    exists: true
+    contents:
+      - '/^NONE$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.2.3
+  {{ end }}
+{{ end }}

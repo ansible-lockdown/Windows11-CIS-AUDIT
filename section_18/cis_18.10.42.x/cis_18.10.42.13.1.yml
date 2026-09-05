@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_42_13_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Scan\DisablePackedExeScanning:
+    title: "18.10.42.13.1 | Ensure 'Scan packed executables' is set to 'Enabled' | DisablePackedExeScanning"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.42.13.1
+  {{ end }}
+{{ end }}

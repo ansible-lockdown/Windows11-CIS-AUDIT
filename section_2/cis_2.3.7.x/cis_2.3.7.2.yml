@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_7_2 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\DontDisplayLastUserName:
+    title: "2.3.7.2 | Ensure 'Interactive logon: Don't display last signed-in' is set to 'Enabled' | DontDisplayLastUserName"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.7.2
+  {{ end }}
+{{ end }}

@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_92_4_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\DeferFeatureUpdates:
+    title: "18.10.92.4.2 | Ensure 'Select when Preview Builds and Feature Updates are received' is set to 'Enabled: 180 or more days' | DeferFeatureUpdates"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.92.4.2
+  {{ end }}
+{{ end }}

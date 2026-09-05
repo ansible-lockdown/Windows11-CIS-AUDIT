@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_15_4 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Datacollection\DoNotShowFeedbackNotifications:
+    title: "18.10.15.4 | Ensure 'Do not show feedback notifications' is set to 'Enabled' | DoNotShowFeedbackNotifications"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.15.4
+  {{ end }}
+{{ end }}

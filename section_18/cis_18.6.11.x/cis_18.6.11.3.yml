@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_6_11_3 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Network Connections\NC_ShowSharedAccessUI:
+    title: "18.6.11.3 | Ensure 'Prohibit use of Internet Connection Sharing on your DNS domain network' is set to 'Enabled' | NC_ShowSharedAccessUI"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.6.11.3
+  {{ end }}
+{{ end }}

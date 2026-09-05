@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_10_1 }}
+file:
+  win11cis_2_3_10_1_lsaanonymousnamelookup:
+    title: "2.3.10.1 | Ensure 'Network access: Allow anonymous SID/Name translation' is set to 'Disabled' | LSAAnonymousNameLookup"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\SystemAccess.LSAAnonymousNameLookup'
+    exists: true
+    contents:
+      - '/^0$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.10.1
+  {{ end }}
+{{ end }}

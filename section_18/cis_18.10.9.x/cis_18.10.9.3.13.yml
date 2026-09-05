@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_10_9_3_13 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\FVE\RDVEnforceUserCert:
+    title: "18.10.9.3.13 | (BL) Ensure 'Configure use of smart cards on removable data drives: Require use of smart cards on removable data drives' is set to 'Enabled: True' | RDVEnforceUserCert"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.10.9.3.13
+  {{ end }}
+{{ end }}

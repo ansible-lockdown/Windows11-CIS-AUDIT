@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_58_5 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search\AllowIndexingEncryptedStoresOrItems:
+    title: "18.10.58.5 | Ensure 'Allow indexing of encrypted files' is set to 'Disabled' | AllowIndexingEncryptedStoresOrItems"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.58.5
+  {{ end }}
+{{ end }}

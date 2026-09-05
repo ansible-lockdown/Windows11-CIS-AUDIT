@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_92_2_3 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AllowTemporaryEnterpriseFeatureControl:
+    title: "18.10.92.2.3 | Ensure 'Enable features introduced via servicing that are off by default' is set to 'Disabled' | AllowTemporaryEnterpriseFeatureControl"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.92.2.3
+  {{ end }}
+{{ end }}

@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_17_6 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\EnableLUA:
+    title: "2.3.17.6 | Ensure 'User Account Control: Run all administrators in Admin Approval Mode' is set to 'Enabled' | EnableLUA"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.17.6
+  {{ end }}
+{{ end }}

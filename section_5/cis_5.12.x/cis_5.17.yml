@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_5_17 }}
+file:
+  win11cis_5_17_spooler:
+    title: "5.17 | Ensure 'Print Spooler (Spooler)' is set to 'Disabled' | Spooler"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.Spooler'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 5.17
+  {{ end }}
+{{ end }}

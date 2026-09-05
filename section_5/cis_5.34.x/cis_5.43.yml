@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_5_43 }}
+file:
+  win11cis_5_43_xblgamesave:
+    title: "5.43 | Ensure 'Xbox Live Game Save (XblGameSave)' is set to 'Disabled' | XblGameSave"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.XblGameSave'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 5.43
+  {{ end }}
+{{ end }}

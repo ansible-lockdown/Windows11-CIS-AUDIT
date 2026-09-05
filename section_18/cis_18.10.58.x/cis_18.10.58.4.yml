@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_58_4 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search\AllowCortanaAboveLock:
+    title: "18.10.58.4 | Ensure 'Allow Cortana above lock screen' is set to 'Disabled' | AllowCortanaAboveLock"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.58.4
+  {{ end }}
+{{ end }}

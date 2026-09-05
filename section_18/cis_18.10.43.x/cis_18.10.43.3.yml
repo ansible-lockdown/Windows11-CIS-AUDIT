@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_43_3 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\AppHVSI\AllowPersistence:
+    title: "18.10.43.3 | Ensure 'Allow data persistence for Microsoft Defender Application Guard' is set to 'Disabled' | AllowPersistence"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.43.3
+  {{ end }}
+{{ end }}

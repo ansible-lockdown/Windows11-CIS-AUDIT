@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_5_38 }}
+file:
+  win11cis_5_38_pushtoinstall:
+    title: "5.38 | Ensure 'Windows PushToInstall Service (PushToInstall)' is set to 'Disabled' | PushToInstall"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.PushToInstall'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 5.38
+  {{ end }}
+{{ end }}

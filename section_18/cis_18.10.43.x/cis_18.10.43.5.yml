@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_43_5 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\AppHVSI\AppHVSIClipboardSettings:
+    title: "18.10.43.5 | Ensure 'Configure Microsoft Defender Application Guard clipboard settings: Clipboard behavior setting' is set to 'Enabled: Enable clipboard operation from an isolated session to the host' | AppHVSIClipboardSettings"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.43.5
+  {{ end }}
+{{ end }}

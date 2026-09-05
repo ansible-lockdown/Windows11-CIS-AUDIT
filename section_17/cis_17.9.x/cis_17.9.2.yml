@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_17_9_2 }}
+file:
+  win11cis_17_9_2_other_system_events:
+    title: "17.9.2 | Ensure 'Audit Other System Events' is set to 'Success and Failure' | Other System Events"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\AuditPolicy.17.9.2'
+    exists: true
+    contents:
+      - '/^3$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 17.9.2
+  {{ end }}
+{{ end }}

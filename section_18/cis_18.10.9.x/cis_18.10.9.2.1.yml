@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_10_9_2_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\FVE\UseEnhancedPin:
+    title: "18.10.9.2.1 | (BL) Ensure 'Allow enhanced PINs for startup' is set to 'Enabled' | UseEnhancedPin"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.10.9.2.1
+  {{ end }}
+{{ end }}

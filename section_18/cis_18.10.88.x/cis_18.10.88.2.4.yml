@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_88_2_4 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Winrm\Service\DisableRunAs:
+    title: "18.10.88.2.4 | Ensure 'Disallow WinRM from storing RunAs credentials' is set to 'Enabled' | DisableRunAs"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.88.2.4
+  {{ end }}
+{{ end }}

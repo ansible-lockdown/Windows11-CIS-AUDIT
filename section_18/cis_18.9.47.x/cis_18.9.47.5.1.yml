@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_9_47_5_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Scripteddiagnosticsprovider\Policy\DisableQueryRemoteServer:
+    title: "18.9.47.5.1 | Ensure 'Microsoft Support Diagnostic Tool: Turn on MSDT interactive communication with support provider' is set to 'Disabled' | DisableQueryRemoteServer"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.9.47.5.1
+  {{ end }}
+{{ end }}

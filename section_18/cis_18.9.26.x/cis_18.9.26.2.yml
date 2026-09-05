@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_9_26_2 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Control\Lsa\RunAsPPL:
+    title: "18.9.26.2 | Ensure 'Configures LSASS to run as a protected process' is set to 'Enabled: Enabled with UEFI Lock' | RunAsPPL"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.26.2
+  {{ end }}
+{{ end }}

@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_57_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Internet Explorer\Feeds\DisableEnclosureDownload:
+    title: "18.10.57.1 | Ensure 'Prevent downloading of enclosures' is set to 'Enabled' | DisableEnclosureDownload"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.57.1
+  {{ end }}
+{{ end }}

@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_5_19 }}
+file:
+  win11cis_5_19_rasauto:
+    title: "5.19 | Ensure 'Remote Access Auto Connection Manager (RasAuto)' is set to 'Disabled' | RasAuto"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.RasAuto'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 5.19
+  {{ end }}
+{{ end }}

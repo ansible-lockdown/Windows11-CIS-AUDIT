@@ -1,0 +1,18 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_88_1_1 }}
+    {{ if not .Vars.win11cis_win_skip_for_test }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Winrm\Client\AllowBasic:
+    title: "18.10.88.1.1 | Ensure 'Allow Basic authentication' is set to 'Disabled' | AllowBasic"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.88.1.1
+    {{ end }}
+  {{ end }}
+{{ end }}

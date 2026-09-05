@@ -1,0 +1,47 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_9_7_1_5 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceClasses\1:
+    title: "18.9.7.1.5 | (BL) Ensure 'Prevent installation of devices using drivers that match these device setup classes: Prevent installation of devices using drivers for these device setup' is set to 'IEEE 1394 device setup classes' | 1"
+    exists: true
+    value: "{d48179be-ec20-11d1-b6b8-00c04fa372a7}"
+    type: REG_SZ
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.9.7.1.5
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceClasses\2:
+    title: "18.9.7.1.5 | (BL) Ensure 'Prevent installation of devices using drivers that match these device setup classes: Prevent installation of devices using drivers for these device setup' is set to 'IEEE 1394 device setup classes' | 2"
+    exists: true
+    value: "{7ebefbc0-3200-11d2-b4c2-00a0C9697d07}"
+    type: REG_SZ
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.9.7.1.5
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceClasses\3:
+    title: "18.9.7.1.5 | (BL) Ensure 'Prevent installation of devices using drivers that match these device setup classes: Prevent installation of devices using drivers for these device setup' is set to 'IEEE 1394 device setup classes' | 3"
+    exists: true
+    value: "{c06ff265-ae09-48f0-812c-16753d7cba83}"
+    type: REG_SZ
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.9.7.1.5
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceClasses\4:
+    title: "18.9.7.1.5 | (BL) Ensure 'Prevent installation of devices using drivers that match these device setup classes: Prevent installation of devices using drivers for these device setup' is set to 'IEEE 1394 device setup classes' | 4"
+    exists: true
+    value: "{6bdd1fc1-810f-11d0-bec7-08002be2092f}"
+    type: REG_SZ
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.9.7.1.5
+  {{ end }}
+{{ end }}

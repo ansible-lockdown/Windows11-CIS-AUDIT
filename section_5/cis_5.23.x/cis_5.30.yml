@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_5_30 }}
+file:
+  win11cis_5_30_ssdpsrv:
+    title: "5.30 | Ensure 'SSDP Discovery (SSDPSRV)' is set to 'Disabled' | SSDPSRV"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.SSDPSRV'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 5.30
+  {{ end }}
+{{ end }}

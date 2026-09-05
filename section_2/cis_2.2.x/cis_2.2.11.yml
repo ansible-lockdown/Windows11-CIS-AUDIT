@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_2_11 }}
+file:
+  win11cis_2_2_11_secreatetokenprivilege:
+    title: "2.2.11 | Ensure 'Create a token object' is set to 'No One' | SeCreateTokenPrivilege"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeCreateTokenPrivilege'
+    exists: true
+    contents:
+      - '/^{{ .Vars.win11cis_secreatetokenprivilege_expected }}$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.2.11
+  {{ end }}
+{{ end }}

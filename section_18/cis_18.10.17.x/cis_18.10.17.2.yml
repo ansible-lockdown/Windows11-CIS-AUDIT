@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_17_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\AppInstaller\EnableExperimentalFeatures:
+    title: "18.10.17.2 | Ensure 'Enable App Installer Experimental Features' is set to 'Disabled' | EnableExperimentalFeatures"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.17.2
+  {{ end }}
+{{ end }}

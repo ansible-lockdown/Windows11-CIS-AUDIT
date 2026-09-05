@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_7_8 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\PasswordExpiryWarning:
+    title: "2.3.7.8 | Ensure 'Interactive logon: Prompt user to change password before expiration' is set to 'between 5 and 14 days' | PasswordExpiryWarning"
+    exists: true
+    value: {{ .Vars.win11cis_password_expiry_warning_days }}
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.7.8
+  {{ end }}
+{{ end }}

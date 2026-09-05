@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_42_16 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\PUAProtection:
+    title: "18.10.42.16 | Ensure 'Configure detection for potentially unwanted applications' is set to 'Enabled: Block' | PUAProtection"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.42.16
+  {{ end }}
+{{ end }}

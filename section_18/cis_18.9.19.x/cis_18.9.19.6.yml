@@ -1,0 +1,18 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_9_19_6 }}
+    {{ if .Vars.win11cis_domain_joined }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\System\EnableCdp:
+    title: "18.9.19.6 | Ensure 'Continue experiences on this device' is set to 'Disabled' | EnableCdp"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.19.6
+    {{ end }}
+  {{ end }}
+{{ end }}

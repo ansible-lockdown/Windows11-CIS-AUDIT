@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_9_35_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fAllowUnsolicited:
+    title: "18.9.35.1 | Ensure 'Configure Offer Remote Assistance' is set to 'Disabled' | fAllowUnsolicited"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.35.1
+  {{ end }}
+{{ end }}

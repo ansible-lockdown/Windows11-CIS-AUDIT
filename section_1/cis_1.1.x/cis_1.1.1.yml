@@ -1,0 +1,21 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_1_1_1 }}
+command:
+  win11cis_1_1_1_passwordhistorysize:
+    title: "1.1.1 | Ensure 'Enforce password history' is set to '24 or more password(s)' | PasswordHistorySize"
+    exec: |-
+      powershell -NoProfile -NonInteractive -Command "$p = Join-Path '{{ .Vars.win11cis_snapshot_dir }}' 'SystemAccess.PasswordHistorySize'; if (-not (Test-Path -LiteralPath $p)) { 'NONCOMPLIANT not_collected' } else { $r = (Get-Content -LiteralPath $p -Raw).Trim(); if ($r -notmatch '^[0-9]+$') { 'NONCOMPLIANT actual=' + $r } else { $v = [int]$r; if ($v -ge {{ .Vars.win11cis_max_passwords_saved }}) { 'COMPLIANT' } else { 'NONCOMPLIANT actual=' + $v } } }"
+    exit-status: 0
+    stdout:
+      - '/^COMPLIANT$/'
+    stderr:
+      have-len: 0
+    timeout: {{ .Vars.timeout_ms }}
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 1.1.1
+  {{ end }}
+{{ end }}

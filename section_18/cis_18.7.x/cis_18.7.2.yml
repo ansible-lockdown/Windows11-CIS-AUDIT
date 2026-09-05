@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_7_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\RedirectionguardPolicy:
+    title: "18.7.2 | Ensure 'Configure Redirection Guard' is set to 'Enabled: Redirection Guard Enabled' | RedirectionguardPolicy"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.7.2
+  {{ end }}
+{{ end }}

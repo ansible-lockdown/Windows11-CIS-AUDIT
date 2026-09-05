@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_80_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer\AlwaysInstallElevated:
+    title: "18.10.80.2 | Ensure 'Always install with elevated privileges' is set to 'Disabled' | AlwaysInstallElevated"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.80.2
+  {{ end }}
+{{ end }}

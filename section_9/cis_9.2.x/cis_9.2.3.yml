@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_9_2_3 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\DisableNotifications:
+    title: "9.2.3 | Ensure 'Windows Firewall: Private: Settings: Display a notification' is set to 'No' | DisableNotifications"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 9.2.3
+  {{ end }}
+{{ end }}

@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_2_9 }}
+file:
+  win11cis_2_2_9_setimezoneprivilege:
+    title: "2.2.9 | Ensure 'Change the time zone' is set to 'Administrators, LOCAL SERVICE, Users' | SeTimeZonePrivilege"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeTimeZonePrivilege'
+    exists: true
+    contents:
+      - '/^S-1-5-19,S-1-5-32-544,S-1-5-32-545$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.2.9
+  {{ end }}
+{{ end }}

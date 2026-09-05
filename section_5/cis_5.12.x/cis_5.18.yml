@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_5_18 }}
+file:
+  win11cis_5_18_wercplsupport:
+    title: "5.18 | Ensure 'Problem Reports and Solutions Control Panel Support (wercplsupport)' is set to 'Disabled' | wercplsupport"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.wercplsupport'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 5.18
+  {{ end }}
+{{ end }}

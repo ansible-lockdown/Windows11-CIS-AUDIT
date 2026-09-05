@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_17_5_2 }}
+file:
+  win11cis_17_5_2_group_membership:
+    title: "17.5.2 | Ensure 'Audit Group Membership' is set to include 'Success' | Group Membership"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\AuditPolicy.17.5.2'
+    exists: true
+    contents:
+      - '/^[13]$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 17.5.2
+  {{ end }}
+{{ end }}

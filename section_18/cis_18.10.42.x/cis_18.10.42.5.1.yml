@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_42_5_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet\LocalSettingOverrideSpynetReporting:
+    title: "18.10.42.5.1 | Ensure 'Configure local setting override for reporting to Microsoft MAPS' is set to 'Disabled' | LocalSettingOverrideSpynetReporting"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.42.5.1
+  {{ end }}
+{{ end }}

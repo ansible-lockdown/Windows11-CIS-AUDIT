@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_10_56_2_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\Client\DisableCloudClipboardIntegration:
+    title: "18.10.56.2.2 | Ensure 'Disable Cloud Clipboard integration for server-to-client data transfer' is set to 'Enabled' | DisableCloudClipboardIntegration"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.10.56.2.2
+  {{ end }}
+{{ end }}

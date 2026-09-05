@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_2_24 }}
+file:
+  win11cis_2_2_24_seimpersonateprivilege:
+    title: "2.2.24 | Ensure 'Impersonate a client after authentication' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE' | SeImpersonatePrivilege"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeImpersonatePrivilege'
+    exists: true
+    contents:
+      - '/^S-1-5-19,S-1-5-20,S-1-5-32-544(,S-1-5-32-568)?,S-1-5-6$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.2.24
+  {{ end }}
+{{ end }}

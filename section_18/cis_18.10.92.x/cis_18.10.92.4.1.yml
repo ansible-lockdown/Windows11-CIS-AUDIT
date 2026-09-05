@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_92_4_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\ManagePreviewBuildsPolicyValue:
+    title: "18.10.92.4.1 | Ensure 'Manage preview builds' is set to 'Disabled' | ManagePreviewBuildsPolicyValue"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.92.4.1
+  {{ end }}
+{{ end }}

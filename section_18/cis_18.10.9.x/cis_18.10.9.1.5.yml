@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_10_9_1_5 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\FVE\FDVRecoveryKey:
+    title: "18.10.9.1.5 | (BL) Ensure 'Choose how BitLocker-protected fixed drives can be recovered: Recovery Key' is set to 'Enabled: Allow 256-bit recovery key' or higher | FDVRecoveryKey"
+    exists: true
+    value: {{ .Vars.win11cis_256bit_recovery_key_setting }}
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.10.9.1.5
+  {{ end }}
+{{ end }}

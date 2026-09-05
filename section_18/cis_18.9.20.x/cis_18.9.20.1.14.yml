@@ -1,0 +1,25 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_9_20_1_14 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting\Disabled:
+    title: "18.9.20.1.14 | Ensure 'Turn off Windows Error Reporting' is set to 'Enabled' | Disabled"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.9.20.1.14
+  HKLM\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting\DoReport:
+    title: "18.9.20.1.14 | Ensure 'Turn off Windows Error Reporting' is set to 'Enabled' | DoReport"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.9.20.1.14
+  {{ end }}
+{{ end }}

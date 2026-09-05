@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_1_2_3 }}
+file:
+  win11cis_1_2_3_allowadministratorlockout:
+    title: "1.2.3 | Ensure 'Allow Administrator account lockout' is set to 'Enabled' | AllowAdministratorLockout"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\SystemAccess.AllowAdministratorLockout'
+    exists: true
+    contents:
+      - '/^1$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 1.2.3
+  {{ end }}
+{{ end }}

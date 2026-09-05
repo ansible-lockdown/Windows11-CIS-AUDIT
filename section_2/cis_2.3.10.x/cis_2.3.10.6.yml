@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_10_6 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters\NullSessionPipes:
+    title: "2.3.10.6 | Ensure 'Network access: Named Pipes that can be accessed anonymously' is set to 'None' | NullSessionPipes"
+    exists: true
+    value: ""
+    type: REG_MULTI_SZ
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.10.6
+  {{ end }}
+{{ end }}

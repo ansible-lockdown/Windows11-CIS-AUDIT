@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_9_36_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Rpc\RestrictRemoteClients:
+    title: "18.9.36.2 | Ensure 'Restrict Unauthenticated RPC clients' is set to 'Enabled: Authenticated' | RestrictRemoteClients"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.36.2
+  {{ end }}
+{{ end }}

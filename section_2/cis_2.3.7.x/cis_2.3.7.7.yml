@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_2_3_7_7 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\CachedLogonsCount:
+    title: "2.3.7.7 | Ensure 'Interactive logon: Number of previous logons to cache (in case domain controller is not available)' is set to '4 or fewer logon(s)' | CachedLogonsCount"
+    exists: true
+    value: '{{ .Vars.win11cis_cached_logons_count }}'
+    type: REG_SZ
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 2.3.7.7
+  {{ end }}
+{{ end }}

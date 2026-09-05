@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_11_12 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Msv1_0\RestrictSendingNTLMTraffic:
+    title: "2.3.11.12 | Ensure 'Network security: Restrict NTLM: Outgoing NTLM traffic to remote servers' is set to 'Audit all' or higher | RestrictSendingNTLMTraffic"
+    exists: true
+    value: {{ .Vars.win11cis_restrict_sending_ntlm_traffic }}
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.11.12
+  {{ end }}
+{{ end }}

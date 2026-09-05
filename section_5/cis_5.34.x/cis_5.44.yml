@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_5_44 }}
+file:
+  win11cis_5_44_xboxnetapisvc:
+    title: "5.44 | Ensure 'Xbox Live Networking Service (XboxNetApiSvc)' is set to 'Disabled' | XboxNetApiSvc"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.XboxNetApiSvc'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 5.44
+  {{ end }}
+{{ end }}

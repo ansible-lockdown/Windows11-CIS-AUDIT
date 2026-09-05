@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_2_30 }}
+file:
+  win11cis_2_2_30_sesecurityprivilege:
+    title: "2.2.30 | Ensure 'Manage auditing and security log' is set to 'Administrators' | SeSecurityPrivilege"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeSecurityPrivilege'
+    exists: true
+    contents:
+      - '/^S-1-5-32-544$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.2.30
+  {{ end }}
+{{ end }}

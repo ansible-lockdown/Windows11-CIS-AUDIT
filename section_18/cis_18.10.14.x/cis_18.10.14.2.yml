@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_14_2 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Credui\EnumerateAdministrators:
+    title: "18.10.14.2 | Ensure 'Enumerate administrator accounts on elevation' is set to 'Disabled' | EnumerateAdministrators"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.14.2
+  {{ end }}
+{{ end }}

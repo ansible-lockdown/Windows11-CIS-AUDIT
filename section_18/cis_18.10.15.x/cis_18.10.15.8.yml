@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_15_8 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Previewbuilds\AllowBuildPreview:
+    title: "18.10.15.8 | Ensure 'Toggle user control over Insider builds' is set to 'Disabled' | AllowBuildPreview"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.15.8
+  {{ end }}
+{{ end }}

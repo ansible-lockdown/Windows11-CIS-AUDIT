@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_15_2 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\ProtectionMode:
+    title: "2.3.15.2 | Ensure 'System objects: Strengthen default permissions of internal system objects (e.g. Symbolic Links)' is set to 'Enabled' | ProtectionMode"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.15.2
+  {{ end }}
+{{ end }}

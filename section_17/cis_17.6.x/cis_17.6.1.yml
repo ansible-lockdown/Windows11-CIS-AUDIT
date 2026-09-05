@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_17_6_1 }}
+file:
+  win11cis_17_6_1_detailed_file_share:
+    title: "17.6.1 | Ensure 'Audit Detailed File Share' is set to include 'Failure' | Detailed File Share"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\AuditPolicy.17.6.1'
+    exists: true
+    contents:
+      - '/^[23]$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 17.6.1
+  {{ end }}
+{{ end }}

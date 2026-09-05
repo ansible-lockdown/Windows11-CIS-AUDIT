@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_10_56_3_10_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\MaxIdleTime:
+    title: "18.10.56.3.10.1 | Ensure 'Set time limit for active but idle Remote Desktop Services sessions' is set to 'Enabled: 15 minutes or less, but not Never (0)' | MaxIdleTime"
+    exists: true
+    value: {{ .Vars.win11cis_idle_rdp_session_disconnect_time }}
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.10.56.3.10.1
+  {{ end }}
+{{ end }}

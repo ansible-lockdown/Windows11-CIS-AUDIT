@@ -1,0 +1,18 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_9_3_4 }}
+    {{ if not .Vars.win11cis_win_skip_for_test }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\AllowLocalPolicyMerge:
+    title: "9.3.4 | Ensure 'Windows Firewall: Public: Settings: Apply local firewall rules' is set to 'No' | AllowLocalPolicyMerge"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 9.3.4
+    {{ end }}
+  {{ end }}
+{{ end }}

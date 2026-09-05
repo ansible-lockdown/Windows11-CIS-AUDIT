@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_10_9_2_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\FVE\OSAllowSecureBootForIntegrity:
+    title: "18.10.9.2.2 | (BL) Ensure 'Allow Secure Boot for integrity validation' is set to 'Enabled' | OSAllowSecureBootForIntegrity"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.10.9.2.2
+  {{ end }}
+{{ end }}

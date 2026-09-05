@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_2_23 }}
+file:
+  win11cis_2_2_23_seauditprivilege:
+    title: "2.2.23 | Ensure 'Generate security audits' is set to 'LOCAL SERVICE, NETWORK SERVICE' | SeAuditPrivilege"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeAuditPrivilege'
+    exists: true
+    contents:
+      - '/^S-1-5-19,S-1-5-20$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.2.23
+  {{ end }}
+{{ end }}

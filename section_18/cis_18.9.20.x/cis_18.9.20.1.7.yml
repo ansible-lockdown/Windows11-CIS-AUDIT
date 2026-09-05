@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_9_20_1_7 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Printers\DisableHTTPPrinting:
+    title: "18.9.20.1.7 | Ensure 'Turn off printing over HTTP' is set to 'Enabled' | DisableHTTPPrinting"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.9.20.1.7
+  {{ end }}
+{{ end }}

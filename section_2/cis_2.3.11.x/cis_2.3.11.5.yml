@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_11_5 }}
+registry:
+  HKLM\SYSTEM\CurrentControlSet\Control\Lsa\NoLMHash:
+    title: "2.3.11.5 | Ensure 'Network security: Do not store LAN Manager hash value on next password change' is set to 'Enabled' | NoLMHash"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.11.5
+  {{ end }}
+{{ end }}

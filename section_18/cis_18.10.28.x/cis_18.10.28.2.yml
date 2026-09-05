@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_10_28_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer\DisableGraphRecentItems:
+    title: "18.10.28.2 | Ensure 'Turn off account-based insights, recent, favorite, and recommended files in File Explorer' is set to 'Enabled' | DisableGraphRecentItems"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.10.28.2
+  {{ end }}
+{{ end }}

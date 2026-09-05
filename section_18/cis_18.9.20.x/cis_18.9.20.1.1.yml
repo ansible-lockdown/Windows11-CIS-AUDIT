@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_9_20_1_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer\NoUseStoreOpenWith:
+    title: "18.9.20.1.1 | Ensure 'Turn off access to the Store' is set to 'Enabled' | NoUseStoreOpenWith"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.9.20.1.1
+  {{ end }}
+{{ end }}

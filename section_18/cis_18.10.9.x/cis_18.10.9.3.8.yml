@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_10_9_3_8 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\FVE\RDVActiveDirectoryInfoToStore:
+    title: "18.10.9.3.8 | (BL) Ensure 'Choose how BitLocker-protected removable drives can be recovered: Configure storage of BitLocker recovery information to AD DS:' is set to 'Enabled: Backup recovery passwords and key packages' | RDVActiveDirectoryInfoToStore"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.10.9.3.8
+  {{ end }}
+{{ end }}

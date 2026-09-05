@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_9_20_1_4 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Handwritingerrorreports\PreventHandwritingErrorReports:
+    title: "18.9.20.1.4 | Ensure 'Turn off handwriting recognition error reporting' is set to 'Enabled' | PreventHandwritingErrorReports"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.9.20.1.4
+  {{ end }}
+{{ end }}

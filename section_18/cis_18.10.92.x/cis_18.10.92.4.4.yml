@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_92_4_4 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AllowOptionalContent:
+    title: "18.10.92.4.4 | Ensure 'Enable optional updates' is set to 'Disabled' | AllowOptionalContent"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.92.4.4
+  {{ end }}
+{{ end }}

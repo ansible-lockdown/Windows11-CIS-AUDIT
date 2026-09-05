@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_9_3_6 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging\LogFilePath:
+    title: "9.3.6 | Ensure 'Windows Firewall: Public: Logging: Name' is set to '%SystemRoot%\\System32\\logfiles\\firewall\\publicfw.log' | LogFilePath"
+    exists: true
+    value: '{{ .Vars.win11cis_public_firewall_log_path }}'
+    type: REG_SZ
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 9.3.6
+  {{ end }}
+{{ end }}

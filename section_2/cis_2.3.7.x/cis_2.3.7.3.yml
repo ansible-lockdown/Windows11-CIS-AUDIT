@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_2_3_7_3 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\MaxDevicePasswordFailedAttempts:
+    title: "2.3.7.3 | (BL) Ensure 'Interactive logon: Machine account lockout threshold' is set to '10 or fewer invalid logon attempts, but not 0' | MaxDevicePasswordFailedAttempts"
+    exists: true
+    value: {{ .Vars.win11cis_max_device_password_failed_attempts }}
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 2.3.7.3
+  {{ end }}
+{{ end }}

@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_1_1_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Personalization\NoLockScreenSlideshow:
+    title: "18.1.1.2 | Ensure 'Prevent enabling lock screen slide show' is set to 'Enabled' | NoLockScreenSlideshow"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.1.1.2
+  {{ end }}
+{{ end }}

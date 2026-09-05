@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_5_15 }}
+file:
+  win11cis_5_15_p2pimsvc:
+    title: "5.15 | Ensure 'Peer Networking Identity Manager (p2pimsvc)' is set to 'Disabled' | p2pimsvc"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.p2pimsvc'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 5.15
+  {{ end }}
+{{ end }}

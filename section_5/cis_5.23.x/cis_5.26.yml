@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_5_26 }}
+file:
+  win11cis_5_26_lanmanserver:
+    title: "5.26 | Ensure 'Server (LanmanServer)' is set to 'Disabled' | LanmanServer"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.LanmanServer'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 5.26
+  {{ end }}
+{{ end }}

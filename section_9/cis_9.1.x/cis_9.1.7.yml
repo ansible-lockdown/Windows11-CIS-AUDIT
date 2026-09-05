@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_9_1_7 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging\LogSuccessfulConnections:
+    title: "9.1.7 | Ensure 'Windows Firewall: Domain: Logging: Log successful connections' is set to 'Yes' | LogSuccessfulConnections"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 9.1.7
+  {{ end }}
+{{ end }}

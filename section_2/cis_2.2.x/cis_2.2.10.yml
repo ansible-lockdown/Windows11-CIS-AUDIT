@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_2_10 }}
+file:
+  win11cis_2_2_10_secreatepagefileprivilege:
+    title: "2.2.10 | Ensure 'Create a pagefile' is set to 'Administrators' | SeCreatePagefilePrivilege"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeCreatePagefilePrivilege'
+    exists: true
+    contents:
+      - '/^S-1-5-32-544$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.2.10
+  {{ end }}
+{{ end }}

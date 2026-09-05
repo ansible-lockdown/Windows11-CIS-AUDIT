@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_3_1_2 }}
+file:
+  win11cis_2_3_1_2_enableguestaccount:
+    title: "2.3.1.2 | Ensure 'Accounts: Guest account status' is set to 'Disabled' | EnableGuestAccount"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\SystemAccess.EnableGuestAccount'
+    exists: true
+    contents:
+      - '/^0$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.3.1.2
+  {{ end }}
+{{ end }}

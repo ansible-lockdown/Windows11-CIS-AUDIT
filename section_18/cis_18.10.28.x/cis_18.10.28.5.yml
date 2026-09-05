@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_28_5 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\PreXPSP2ShellProtocolBehavior:
+    title: "18.10.28.5 | Ensure 'Turn off shell protocol protected mode' is set to 'Disabled' | PreXPSP2ShellProtocolBehavior"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.28.5
+  {{ end }}
+{{ end }}

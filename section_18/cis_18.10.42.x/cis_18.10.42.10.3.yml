@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_42_10_3 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection\DisableBehaviorMonitoring:
+    title: "18.10.42.10.3 | Ensure 'Turn on behavior monitoring' is set to 'Enabled' | DisableBehaviorMonitoring"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.42.10.3
+  {{ end }}
+{{ end }}

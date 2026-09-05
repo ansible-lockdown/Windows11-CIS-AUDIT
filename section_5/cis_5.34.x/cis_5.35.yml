@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_5_35 }}
+file:
+  win11cis_5_35_wmpnetworksvc:
+    title: "5.35 | Ensure 'Windows Media Player Network Sharing Service (WMPNetworkSvc)' is set to 'Disabled' or 'Not Installed' | WMPNetworkSvc"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.WMPNetworkSvc'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 5.35
+  {{ end }}
+{{ end }}

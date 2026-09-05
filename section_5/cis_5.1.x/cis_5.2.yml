@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_5_2 }}
+file:
+  win11cis_5_2_bthserv:
+    title: "5.2 | Ensure 'Bluetooth Support Service (bthserv)' is set to 'Disabled' | bthserv"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.bthserv'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 5.2
+  {{ end }}
+{{ end }}

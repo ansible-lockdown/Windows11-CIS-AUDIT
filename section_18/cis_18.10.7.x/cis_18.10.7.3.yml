@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_7_3 }}
+registry:
+  HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoDriveTypeAutoRun:
+    title: "18.10.7.3 | Ensure 'Turn off Autoplay' is set to 'Enabled: All drives' | NoDriveTypeAutoRun"
+    exists: true
+    value: 255
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.7.3
+  {{ end }}
+{{ end }}

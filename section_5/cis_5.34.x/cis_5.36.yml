@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_5_36 }}
+file:
+  win11cis_5_36_icssvc:
+    title: "5.36 | Ensure 'Windows Mobile Hotspot Service (icssvc)' is set to 'Disabled' | icssvc"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.icssvc'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 5.36
+  {{ end }}
+{{ end }}

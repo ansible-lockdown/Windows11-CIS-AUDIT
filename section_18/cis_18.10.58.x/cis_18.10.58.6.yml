@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_58_6 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search\AllowSearchToUseLocation:
+    title: "18.10.58.6 | Ensure 'Allow search and Cortana to use location' is set to 'Disabled' | AllowSearchToUseLocation"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.58.6
+  {{ end }}
+{{ end }}

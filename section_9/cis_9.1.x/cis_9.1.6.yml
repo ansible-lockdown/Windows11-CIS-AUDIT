@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_9_1_6 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging\LogDroppedPackets:
+    title: "9.1.6 | Ensure 'Windows Firewall: Domain: Logging: Log dropped packets' is set to 'Yes' | LogDroppedPackets"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 9.1.6
+  {{ end }}
+{{ end }}

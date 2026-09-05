@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_9_20_1_5 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Internet Connection Wizard\ExitOnMSICW:
+    title: "18.9.20.1.5 | Ensure 'Turn off Internet Connection Wizard if URL connection is referring to Microsoft.com' is set to 'Enabled' | ExitOnMSICW"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.9.20.1.5
+  {{ end }}
+{{ end }}

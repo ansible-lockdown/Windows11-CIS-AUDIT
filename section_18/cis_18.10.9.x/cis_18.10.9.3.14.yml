@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_10_9_3_14 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\FVE\RDVDenyWriteAccess:
+    title: "18.10.9.3.14 | (BL) Ensure 'Deny write access to removable drives not protected by BitLocker' is set to 'Enabled' | RDVDenyWriteAccess"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.10.9.3.14
+  {{ end }}
+{{ end }}

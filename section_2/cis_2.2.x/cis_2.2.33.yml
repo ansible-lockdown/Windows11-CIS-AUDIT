@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_2_33 }}
+file:
+  win11cis_2_2_33_semanagevolumeprivilege:
+    title: "2.2.33 | Ensure 'Perform volume maintenance tasks' is set to 'Administrators' | SeManageVolumePrivilege"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeManageVolumePrivilege'
+    exists: true
+    contents:
+      - '/^S-1-5-32-544$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.2.33
+  {{ end }}
+{{ end }}

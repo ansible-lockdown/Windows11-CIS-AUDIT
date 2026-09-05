@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_9_36_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Rpc\EnableAuthEpResolution:
+    title: "18.9.36.1 | Ensure 'Enable RPC Endpoint Mapper Client Authentication' is set to 'Enabled' | EnableAuthEpResolution"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.36.1
+  {{ end }}
+{{ end }}

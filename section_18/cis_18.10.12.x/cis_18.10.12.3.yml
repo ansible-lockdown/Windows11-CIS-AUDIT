@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_12_3 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent\DisableWindowsConsumerFeatures:
+    title: "18.10.12.3 | Ensure 'Turn off Microsoft consumer experiences' is set to 'Enabled' | DisableWindowsConsumerFeatures"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.12.3
+  {{ end }}
+{{ end }}

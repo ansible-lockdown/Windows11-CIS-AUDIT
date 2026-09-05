@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_17_5_6 }}
+file:
+  win11cis_17_5_6_special_logon:
+    title: "17.5.6 | Ensure 'Audit Special Logon' is set to include 'Success' | Special Logon"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\AuditPolicy.17.5.6'
+    exists: true
+    contents:
+      - '/^[13]$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 17.5.6
+  {{ end }}
+{{ end }}

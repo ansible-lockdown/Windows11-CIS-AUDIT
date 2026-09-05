@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_10_86_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\PowerShell\Transcription\EnableTranscripting:
+    title: "18.10.86.2 | Ensure 'Turn on PowerShell Transcription' is set to 'Enabled' | EnableTranscripting"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.10.86.2
+  {{ end }}
+{{ end }}

@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_bitlocker }}
+  {{ if .Vars.win11cis_rule_18_10_9_2_12 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\FVE\OSPassphrase:
+    title: "18.10.9.2.12 | (BL) Ensure 'Configure use of passwords for operating system drives' is set to 'Disabled' | OSPassphrase"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      bitlocker: 1
+      CIS_ID:
+        - 18.10.9.2.12
+  {{ end }}
+{{ end }}

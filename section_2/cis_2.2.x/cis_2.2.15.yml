@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_2_15 }}
+file:
+  win11cis_2_2_15_sedebugprivilege:
+    title: "2.2.15 | Ensure 'Debug programs' is set to 'Administrators' | SeDebugPrivilege"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeDebugPrivilege'
+    exists: true
+    contents:
+      - '/^S-1-5-32-544$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.2.15
+  {{ end }}
+{{ end }}

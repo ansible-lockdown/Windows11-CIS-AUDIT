@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_2_3_14_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Cryptography\ForceKeyProtection:
+    title: "2.3.14.1 | Ensure 'System cryptography: Force strong key protection for user keys stored on the computer' is set to 'User is prompted when the key is first used' or higher | ForceKeyProtection"
+    exists: true
+    value: {{ .Vars.win11cis_force_key_protection }}
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 2.3.14.1
+  {{ end }}
+{{ end }}

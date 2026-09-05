@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_2_36 }}
+file:
+  win11cis_2_2_36_seassignprimarytokenprivilege:
+    title: "2.2.36 | Ensure 'Replace a process level token' is set to 'LOCAL SERVICE, NETWORK SERVICE' | SeAssignPrimaryTokenPrivilege"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeAssignPrimaryTokenPrivilege'
+    exists: true
+    contents:
+      - '/^S-1-5-19,S-1-5-20$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.2.36
+  {{ end }}
+{{ end }}

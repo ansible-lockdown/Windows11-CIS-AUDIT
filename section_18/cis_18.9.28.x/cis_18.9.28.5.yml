@@ -1,0 +1,18 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_9_28_5 }}
+    {{ if .Vars.win11cis_domain_joined }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\System\DisableLockScreenAppNotifications:
+    title: "18.9.28.5 | Ensure 'Turn off app notifications on the lock screen' is set to 'Enabled' | DisableLockScreenAppNotifications"
+    exists: true
+    value: 1
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.9.28.5
+    {{ end }}
+  {{ end }}
+{{ end }}

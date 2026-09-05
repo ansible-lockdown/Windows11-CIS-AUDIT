@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_19_7_5_1 }}
+file:
+  win11cis_19_7_5_1_per_user_policy:
+    title: "19.7.5.1 | Ensure 'Do not preserve zone information in file attachments' is set to 'Disabled' | per-user policy"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\HKU.19.7.5.1'
+    exists: true
+    contents:
+      - '/^COMPLIANT profiles=[1-9][0-9]*$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 19.7.5.1
+  {{ end }}
+{{ end }}

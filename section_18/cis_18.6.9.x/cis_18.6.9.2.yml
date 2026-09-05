@@ -1,0 +1,43 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_18_6_9_2 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Lltd\AllowRspndrOnDomain:
+    title: "18.6.9.2 | Ensure 'Turn on Responder (RSPNDR) driver' is set to 'Disabled' | AllowRspndrOnDomain"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.6.9.2
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Lltd\AllowRspndrOnPublicNet:
+    title: "18.6.9.2 | Ensure 'Turn on Responder (RSPNDR) driver' is set to 'Disabled' | AllowRspndrOnPublicNet"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.6.9.2
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Lltd\EnableRspndr:
+    title: "18.6.9.2 | Ensure 'Turn on Responder (RSPNDR) driver' is set to 'Disabled' | EnableRspndr"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.6.9.2
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Lltd\ProhibitRspndrOnPrivateNet:
+    title: "18.6.9.2 | Ensure 'Turn on Responder (RSPNDR) driver' is set to 'Disabled' | ProhibitRspndrOnPrivateNet"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 18.6.9.2
+  {{ end }}
+{{ end }}

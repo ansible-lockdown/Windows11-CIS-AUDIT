@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_2 }}
+  {{ if .Vars.win11cis_rule_5_24 }}
+file:
+  win11cis_5_24_remoteregistry:
+    title: "5.24 | Ensure 'Remote Registry (RemoteRegistry)' is set to 'Disabled' | RemoteRegistry"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\Service.RemoteRegistry'
+    exists: true
+    contents:
+      - '/^(Disabled|NotInstalled)$/'
+    meta:
+      workstation: 2
+      CIS_ID:
+        - 5.24
+  {{ end }}
+{{ end }}

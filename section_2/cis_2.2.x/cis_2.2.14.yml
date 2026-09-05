@@ -1,0 +1,17 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_2_2_14 }}
+file:
+  win11cis_2_2_14_secreatesymboliclinkprivilege:
+    title: "2.2.14 | Configure 'Create symbolic links' | SeCreateSymbolicLinkPrivilege"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\PrivilegeRights.SeCreateSymbolicLinkPrivilege'
+    exists: true
+    contents:
+      - '/^S-1-5-32-544(,S-1-5-83-0)?$/'
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 2.2.14
+  {{ end }}
+{{ end }}

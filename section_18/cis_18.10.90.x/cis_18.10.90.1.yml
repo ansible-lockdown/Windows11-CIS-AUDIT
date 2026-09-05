@@ -1,0 +1,16 @@
+---
+
+{{ if .Vars.win11cis_level_1 }}
+  {{ if .Vars.win11cis_rule_18_10_90_1 }}
+registry:
+  HKLM\SOFTWARE\Policies\Microsoft\Windows\Sandbox\AllowClipboardRedirection:
+    title: "18.10.90.1 | Ensure 'Allow clipboard sharing with Windows Sandbox' is set to 'Disabled' | AllowClipboardRedirection"
+    exists: true
+    value: 0
+    type: REG_DWORD
+    meta:
+      workstation: 1
+      CIS_ID:
+        - 18.10.90.1
+  {{ end }}
+{{ end }}
