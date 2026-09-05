@@ -52,8 +52,19 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-# ...except around the syver call itself: it writes to stderr in normal use, and
-# with 2>&1 PowerShell turns that into a terminating NativeCommandError.
+
+# Stop is right for the script's own logic, but wrong around a native command
+# captured with 2>&1: PowerShell turns any stderr write into a terminating
+# NativeCommandError, so a single syver warning would abort the run. Invoke-Syver
+# relaxes it for exactly the length of the call and puts it back afterwards.
+function Invoke-Syver {
+    param([scriptblock]$Call)
+
+    $previous = $ErrorActionPreference
+    $ErrorActionPreference = 'Continue'
+    try   { & $Call }
+    finally { $ErrorActionPreference = $previous }
+}
 
 # Benchmark identity. Changes only on a new benchmark release.
 $Benchmark    = 'CIS'
@@ -66,10 +77,14 @@ $AuditBin = if ($env:AUDIT_BIN) { $env:AUDIT_BIN } else { 'C:\Program Files\syve
 # file: contents:, command:, --vars, --vars-inline, --use-alpha=1 -- works here.
 $AuditBinMinVer = '0.9.4'
 # From 0.11.0 syver reports a check it cannot run as an ERROR instead of letting
-# it pass quietly. Below that, an assertion syver does not support can look like
-# a pass, so a green run is worth less. Warned about, not enforced: the audit
-# still runs and still tells the truth about everything it does check.
+# it pass quietly. Below that, an unsupported assertion can look like a pass, so
+# a green run is worth less. Warned about, not enforced.
 $AuditBinTruthfulVer = '0.11.0'
+# The feature/windows-truthfulness builds carry that behaviour but describe
+# themselves from the branch point, so --version reports 0.9.4-nn-g<commit>
+# while the build is really 0.11.0. Recognise the known-good commits by hash
+# rather than nagging about a version number that understates what is running.
+$AuditBinTruthfulCommits = @('e8ca7df')
 $AuditFile = if ($env:AUDIT_FILE) { $env:AUDIT_FILE } else { 'goss.yml' }
 $AuditContentLocation = if ($env:AUDIT_CONTENT_LOCATION) {
     $env:AUDIT_CONTENT_LOCATION
@@ -314,15 +329,18 @@ Write-Host 'OK - running elevated'
 if (-not $CollectOnly) {
     if (Test-Path -LiteralPath $AuditBin) {
         Write-Host "OK - Audit binary $AuditBin is available"
-        $versionRaw = (& $AuditBin --version 2>&1) -join ' '
+        $versionRaw = (Invoke-Syver { & $AuditBin --version 2>&1 }) -join ' '
         if ($versionRaw -match 'v?(\d+\.\d+\.\d+)') {
             $installed = [version]$Matches[1]
             if ($installed -ge [version]$AuditBinMinVer) {
                 Write-Host "OK - syver version is ok ($installed >= $AuditBinMinVer)"
-                if ($installed -lt [version]$AuditBinTruthfulVer) {
-                    Write-Host ("NOTE - syver $installed is below $AuditBinTruthfulVer. " +
-                        "Below that version an unsupported check can pass quietly " +
-                        "instead of erroring, so treat a clean run with that in mind.")
+                $isTruthful = $installed -ge [version]$AuditBinTruthfulVer -or
+                    ($AuditBinTruthfulCommits | Where-Object { $versionRaw -match $_ })
+                if (-not $isTruthful) {
+                    Write-Host ("NOTE - syver $installed is below $AuditBinTruthfulVer and is " +
+                        "not a known feature/windows-truthfulness build. An unsupported " +
+                        "check can pass quietly instead of erroring, so treat a clean run " +
+                        "with that in mind.")
                 }
             } else {
                 Write-Host "WARNING - syver installed = $installed, does not meet minimum of $AuditBinMinVer"
@@ -431,19 +449,24 @@ Write-Host ''
 # syver refuses to run on Windows at all.
 #
 # The metadata goes in as a second --vars file rather than through
-# --vars-inline. Passing JSON on a PowerShell 5.1 command line means fighting
-# two separate quoting rules: the inner double quotes are stripped unless
-# backslash-escaped, and once escaped the argument is then split on the spaces
-# inside values like "Microsoft Windows 11 Enterprise". --vars takes multiple
-# files with later ones overriding, so this needs no quoting at all.
+# --vars-inline. The flag itself is fine -- syver_for_windows.md section 3
+# records it working in both shells, in either flag position, and rejecting a
+# malformed value at parse time. The problem is purely PowerShell argument
+# handling: the inner double quotes are stripped unless backslash-escaped, and
+# once escaped the argument is split on the spaces inside values like
+# "Microsoft Windows 11 Enterprise". --vars takes multiple files with later ones
+# overriding, so this sidesteps the shell entirely. SYVER_VARS_INLINE would work
+# too; a file is easier to inspect when something looks wrong.
 $metaVarsFile = Join-Path $env:TEMP 'win11cis_meta_vars.json'
 [System.IO.File]::WriteAllText($metaVarsFile, $auditJsonVars,
     (New-Object System.Text.UTF8Encoding($false)))
 
 try {
-    $output = & $AuditBin --use-alpha=1 -g $gossFile `
-        --vars $varfilePath --vars $metaVarsFile `
-        v --max-concurrent $MaxConcurrent @formatArgs 2>&1
+    $output = Invoke-Syver {
+        & $AuditBin --use-alpha=1 -g $gossFile `
+            --vars $varfilePath --vars $metaVarsFile `
+            v --max-concurrent $MaxConcurrent @formatArgs 2>&1
+    }
 } finally {
     Remove-Item -LiteralPath $metaVarsFile -Force -ErrorAction SilentlyContinue
 }
