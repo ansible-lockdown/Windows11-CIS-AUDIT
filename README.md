@@ -1,4 +1,4 @@
-# Windows 11 Enterprise syver config
+# Windows 11 Enterprise Audit
 
 ## Overview
 
@@ -25,18 +25,36 @@ Those controls are expected to fail against a role that still writes the
 registry. That is the point of the audit, and softening it would produce a green
 result that proves nothing.
 
+## Which binary runs this
+
+The content is Goss format, the same as every other Ansible-Lockdown audit
+repository. It is run with [syver](https://github.com/krameff/syver), the Goss
+fork that adds Windows support.
+
+The fork matters here rather than being a preference. Of the 540 specs, **403
+assert through the `registry:` resource**, 137 through `file:` and 6 through
+`command:`. `registry:` is provided by syver, so upstream Goss can run the
+`file:` and `command:` subset but not the three quarters of this benchmark that
+reads the registry. Anything that implements the same resources will run the
+content unchanged - nothing here is syver-specific beyond the resource types.
+
 ## Requirements
 
-- `syver` >= 0.9.4, pre-staged on the host. Nothing here downloads it.
-  Set `AUDIT_BIN` if it is not at `C:\Program Files\syver\syver.exe`.
-  Validated against `v0.9.4-23-g142835b`.
+- `syver` >= 0.11.0. Published releases are at
+  <https://github.com/krameff/syver/releases>; `v0.11.1` is the version this
+  content is validated against.
 
   From 0.11.0 syver reports a check it cannot run as an error rather than
   letting it pass quietly. Below that version a green result is worth slightly
   less, because an unsupported assertion can look like a pass. `run_audit.ps1`
-  notes this rather than refusing to run: everything this audit uses -
+  warns rather than refusing to run, and everything this audit uses -
   `registry:`, `file: contents:`, `command:`, `--vars`, `--use-alpha=1` - works
-  on 0.9.4.
+  as far back as 0.9.4.
+
+  Nothing in this repository downloads the binary. Run standalone, pre-stage it
+  and set `AUDIT_BIN` if it is not at `C:\Program Files\syver\syver.exe`. Run
+  from the remediation role, `get_audit_binary_method: download` fetches the
+  published asset and verifies its SHA256.
 - Administrator privileges. `secedit`, `auditpol` and `HKEY_USERS` all need them.
 - Windows support in syver is alpha and gated behind `--use-alpha=1`, which
   `run_audit.ps1` passes for you.
