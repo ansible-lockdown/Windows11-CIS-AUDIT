@@ -2,6 +2,7 @@
 
 {{ if .Vars.win11cis_level_1 }}
   {{ if .Vars.win11cis_rule_18_9_25_3 }}
+    {{ if .Vars.win11cis_domain_joined }}
 registry:
   HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\LAPS\ADPasswordEncryptionEnabled:
     title: "18.9.25.3 | Ensure 'Enable password encryption' is set to 'Enabled' | ADPasswordEncryptionEnabled"
@@ -12,5 +13,6 @@ registry:
       workstation: 1
       CIS_ID:
         - 18.9.25.3
+    {{ end }}
   {{ end }}
 {{ end }}

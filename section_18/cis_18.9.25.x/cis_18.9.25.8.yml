@@ -2,6 +2,7 @@
 
 {{ if .Vars.win11cis_level_1 }}
   {{ if .Vars.win11cis_rule_18_9_25_8 }}
+    {{ if .Vars.win11cis_domain_joined }}
 registry:
   HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\LAPS\PostAuthenticationActions:
     title: "18.9.25.8 | Ensure 'Post-authentication actions: Actions' is set to 'Enabled: Reset the password and logoff the managed account' or higher | PostAuthenticationActions"
@@ -12,5 +13,6 @@ registry:
       workstation: 1
       CIS_ID:
         - 18.9.25.8
+    {{ end }}
   {{ end }}
 {{ end }}

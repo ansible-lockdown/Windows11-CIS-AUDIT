@@ -2,6 +2,7 @@
 
 {{ if .Vars.win11cis_level_1 }}
   {{ if .Vars.win11cis_rule_18_9_25_7 }}
+    {{ if .Vars.win11cis_domain_joined }}
 registry:
   HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\LAPS\PostAuthenticationResetDelay:
     title: "18.9.25.7 | Ensure 'Post-authentication actions: Grace period (hours)' is set to 'Enabled: 8 or fewer hours, but not 0' | PostAuthenticationResetDelay"
@@ -12,5 +13,6 @@ registry:
       workstation: 1
       CIS_ID:
         - 18.9.25.7
+    {{ end }}
   {{ end }}
 {{ end }}

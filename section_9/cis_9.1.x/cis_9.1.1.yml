@@ -2,6 +2,7 @@
 
 {{ if .Vars.win11cis_level_1 }}
   {{ if .Vars.win11cis_rule_9_1_1 }}
+    {{ if .Vars.win11cis_domain_joined }}
 registry:
   HKLM\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\EnableFirewall:
     title: "9.1.1 | Ensure 'Windows Firewall: Domain: Firewall state' is set to 'On (recommended)' | EnableFirewall"
@@ -23,5 +24,6 @@ file:
       workstation: 1
       CIS_ID:
         - 9.1.1
+    {{ end }}
   {{ end }}
 {{ end }}

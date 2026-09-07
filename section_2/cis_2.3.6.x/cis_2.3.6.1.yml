@@ -2,6 +2,7 @@
 
 {{ if .Vars.win11cis_level_1 }}
   {{ if .Vars.win11cis_rule_2_3_6_1 }}
+    {{ if .Vars.win11cis_domain_joined }}
 registry:
   HKLM\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters\RequireSignOrSeal:
     title: "2.3.6.1 | Ensure 'Domain member: Digitally encrypt or sign secure channel data (always)' is set to 'Enabled' | RequireSignOrSeal"
@@ -12,5 +13,6 @@ registry:
       workstation: 1
       CIS_ID:
         - 2.3.6.1
+    {{ end }}
   {{ end }}
 {{ end }}

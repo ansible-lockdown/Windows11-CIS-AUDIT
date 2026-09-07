@@ -2,6 +2,7 @@
 
 {{ if .Vars.win11cis_level_1 }}
   {{ if .Vars.win11cis_rule_18_9_25_4 }}
+    {{ if .Vars.win11cis_domain_joined }}
 registry:
   HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\LAPS\PasswordComplexity:
     title: "18.9.25.4 | Ensure 'Password Settings: Password Complexity' is set to 'Enabled: Large letters + small letters + numbers + special characters' | PasswordComplexity"
@@ -12,5 +13,6 @@ registry:
       workstation: 1
       CIS_ID:
         - 18.9.25.4
+    {{ end }}
   {{ end }}
 {{ end }}

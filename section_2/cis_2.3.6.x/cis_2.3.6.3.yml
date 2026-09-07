@@ -2,6 +2,7 @@
 
 {{ if .Vars.win11cis_level_1 }}
   {{ if .Vars.win11cis_rule_2_3_6_3 }}
+    {{ if .Vars.win11cis_domain_joined }}
 registry:
   HKLM\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters\SignSecureChannel:
     title: "2.3.6.3 | Ensure 'Domain member: Digitally sign secure channel data (when possible)' is set to 'Enabled' | SignSecureChannel"
@@ -12,5 +13,6 @@ registry:
       workstation: 1
       CIS_ID:
         - 2.3.6.3
+    {{ end }}
   {{ end }}
 {{ end }}
