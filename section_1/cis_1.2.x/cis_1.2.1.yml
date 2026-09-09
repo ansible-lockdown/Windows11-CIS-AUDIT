@@ -2,6 +2,8 @@
 
 {{ if .Vars.win11cis_level_1 }}
   {{ if .Vars.win11cis_rule_1_2_1 }}
+    {{ if not .Vars.win11cis_domain_joined }}
+      {{ if not .Vars.win11cis_win_skip_for_test }}
 command:
   win11cis_1_2_1_lockoutduration:
     title: "1.2.1 | Ensure 'Account lockout duration' is set to '15 or more minute(s)' | LockoutDuration"
@@ -17,5 +19,7 @@ command:
       workstation: 1
       CIS_ID:
         - 1.2.1
+      {{ end }}
+    {{ end }}
   {{ end }}
 {{ end }}

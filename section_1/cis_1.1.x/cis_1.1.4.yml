@@ -2,6 +2,7 @@
 
 {{ if .Vars.win11cis_level_1 }}
   {{ if .Vars.win11cis_rule_1_1_4 }}
+    {{ if not .Vars.win11cis_domain_joined }}
 command:
   win11cis_1_1_4_minimumpasswordlength:
     title: "1.1.4 | Ensure 'Minimum password length' is set to '14 or more character(s)' | MinimumPasswordLength"
@@ -17,5 +18,6 @@ command:
       workstation: 1
       CIS_ID:
         - 1.1.4
+    {{ end }}
   {{ end }}
 {{ end }}

@@ -2,6 +2,7 @@
 
 {{ if .Vars.win11cis_level_1 }}
   {{ if .Vars.win11cis_rule_1_1_7 }}
+    {{ if not .Vars.win11cis_domain_joined }}
 file:
   win11cis_1_1_7_cleartextpassword:
     title: "1.1.7 | Ensure 'Store passwords using reversible encryption' is set to 'Disabled' | ClearTextPassword"
@@ -13,5 +14,6 @@ file:
       workstation: 1
       CIS_ID:
         - 1.1.7
+    {{ end }}
   {{ end }}
 {{ end }}

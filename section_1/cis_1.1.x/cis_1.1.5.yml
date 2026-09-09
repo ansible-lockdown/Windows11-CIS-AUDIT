@@ -2,6 +2,7 @@
 
 {{ if .Vars.win11cis_level_1 }}
   {{ if .Vars.win11cis_rule_1_1_5 }}
+    {{ if not .Vars.win11cis_domain_joined }}
 file:
   win11cis_1_1_5_passwordcomplexity:
     title: "1.1.5 | Ensure 'Password must meet complexity requirements' is set to 'Enabled' | PasswordComplexity"
@@ -13,5 +14,6 @@ file:
       workstation: 1
       CIS_ID:
         - 1.1.5
+    {{ end }}
   {{ end }}
 {{ end }}

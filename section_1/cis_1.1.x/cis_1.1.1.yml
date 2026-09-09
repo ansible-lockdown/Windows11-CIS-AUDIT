@@ -2,6 +2,7 @@
 
 {{ if .Vars.win11cis_level_1 }}
   {{ if .Vars.win11cis_rule_1_1_1 }}
+    {{ if not .Vars.win11cis_domain_joined }}
 command:
   win11cis_1_1_1_passwordhistorysize:
     title: "1.1.1 | Ensure 'Enforce password history' is set to '24 or more password(s)' | PasswordHistorySize"
@@ -17,5 +18,6 @@ command:
       workstation: 1
       CIS_ID:
         - 1.1.1
+    {{ end }}
   {{ end }}
 {{ end }}
