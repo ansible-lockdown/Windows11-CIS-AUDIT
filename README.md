@@ -6,6 +6,12 @@
 
 [Centre For Internet Security]
 
+**This audit component is in beta while we gather feedback.** It is usable and its
+results are meaningful, and we would like to hear how it behaves on your estate -
+what it gets wrong, what it reports that you did not expect, and what is missing.
+Please raise an issue, or come and talk to us on the [Discord Server](https://www.lockdownenterprise.com/discord).
+Expect the specs and the variables they read to change in response.
+
 This repository is a set of configuration files and directories to run the audit
 of the relevant benchmark of Windows 11 Enterprise workstations.
 
