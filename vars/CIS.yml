@@ -29,7 +29,7 @@ win11cis_bitlocker: false
 
 #  Mirrors the remediation role's own gates, so the audit tests what the role
 #  was actually asked to apply.
-win11cis_domain_joined: true
+win11cis_domain_joined: false
 win11cis_win_skip_for_test: false
 
 
