@@ -2,8 +2,7 @@
 
 {{ if .Vars.win11cis_level_1 }}
   {{ if .Vars.win11cis_rule_1_2_4 }}
-    {{ if not .Vars.win11cis_domain_joined }}
-      {{ if not .Vars.win11cis_win_skip_for_test }}
+    {{ if not .Vars.win11cis_win_skip_for_test }}
 command:
   win11cis_1_2_4_resetlockoutcount:
     title: "1.2.4 | Ensure 'Reset account lockout counter after' is set to '15 or more minute(s)' | ResetLockoutCount"
@@ -15,11 +14,12 @@ command:
     stderr:
       have-len: 0
     timeout: {{ .Vars.timeout_ms }}
+    skip: {{ if not .Vars.win11cis_domain_joined }}false{{ else }}true{{ end }}
     meta:
+      skip_reason: "domain scoped - on a domain joined host the Default Domain Policy sets this [System Access] value, so the role does not apply it"
       workstation: 1
       CIS_ID:
         - 1.2.4
-      {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}

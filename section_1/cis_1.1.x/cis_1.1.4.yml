@@ -2,7 +2,6 @@
 
 {{ if .Vars.win11cis_level_1 }}
   {{ if .Vars.win11cis_rule_1_1_4 }}
-    {{ if not .Vars.win11cis_domain_joined }}
 command:
   win11cis_1_1_4_minimumpasswordlength:
     title: "1.1.4 | Ensure 'Minimum password length' is set to '14 or more character(s)' | MinimumPasswordLength"
@@ -14,10 +13,11 @@ command:
     stderr:
       have-len: 0
     timeout: {{ .Vars.timeout_ms }}
+    skip: {{ if not .Vars.win11cis_domain_joined }}false{{ else }}true{{ end }}
     meta:
+      skip_reason: "domain scoped - on a domain joined host the Default Domain Policy sets this [System Access] value, so the role does not apply it"
       workstation: 1
       CIS_ID:
         - 1.1.4
-    {{ end }}
   {{ end }}
 {{ end }}

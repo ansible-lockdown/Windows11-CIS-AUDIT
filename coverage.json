@@ -1281,7 +1281,7 @@
     "file": "section_2/cis_2.3.11.x/cis_2.3.11.6.yml",
     "assertions": 1,
     "resources": [
-      "registry"
+      "file"
     ],
     "hand_finish": false,
     "reason": null

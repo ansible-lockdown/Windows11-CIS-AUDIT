@@ -319,6 +319,7 @@
     "AllowAdministratorLockout",
     "ClearTextPassword",
     "EnableGuestAccount",
+    "ForceLogoffWhenHourExpire",
     "LSAAnonymousNameLookup",
     "LockoutBadCount",
     "LockoutDuration",

@@ -115,7 +115,11 @@ should hold a configurable user right - sit at the end of the file.
 Two of them mirror gates in the remediation role and must match how it was run:
 
 - `win11cis_domain_joined` - several controls apply only to domain members, and
-  four BitLocker controls only to standalone machines.
+  four BitLocker controls only to standalone machines. `run_audit.ps1` sets it
+  from `Win32_ComputerSystem.PartOfDomain`, so it follows the host rather than
+  this file. When it is true, the controls the domain owns - section 1 account
+  policy and 2.3.11.6 - are reported as skipped, with the reason in
+  `meta.skip_reason`, rather than failed or left out.
 - `win11cis_win_skip_for_test` - the role's own switch for the 13 controls that
   would sever a test host (RDP, WinRM, sshd, the public firewall). If the role
   was run with it set, set it here too, or those controls will fail correctly

@@ -2,8 +2,7 @@
 
 {{ if .Vars.win11cis_level_1 }}
   {{ if .Vars.win11cis_rule_1_2_2 }}
-    {{ if not .Vars.win11cis_domain_joined }}
-      {{ if not .Vars.win11cis_win_skip_for_test }}
+    {{ if not .Vars.win11cis_win_skip_for_test }}
 file:
   win11cis_1_2_2_lockoutbadcount:
     title: "1.2.2 | Ensure 'Account lockout threshold' is set to '5 or fewer invalid logon attempt(s), but not 0' | LockoutBadCount"
@@ -11,11 +10,12 @@ file:
     exists: true
     contents:
       - '/^[1-{{ .Vars.win11cis_bad_login_lockout_count }}]$/'
+    skip: {{ if not .Vars.win11cis_domain_joined }}false{{ else }}true{{ end }}
     meta:
+      skip_reason: "domain scoped - on a domain joined host the Default Domain Policy sets this [System Access] value, so the role does not apply it"
       workstation: 1
       CIS_ID:
         - 1.2.2
-      {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}

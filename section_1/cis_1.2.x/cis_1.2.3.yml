@@ -2,8 +2,7 @@
 
 {{ if .Vars.win11cis_level_1 }}
   {{ if .Vars.win11cis_rule_1_2_3 }}
-    {{ if not .Vars.win11cis_domain_joined }}
-      {{ if not .Vars.win11cis_win_skip_for_test }}
+    {{ if not .Vars.win11cis_win_skip_for_test }}
 file:
   win11cis_1_2_3_allowadministratorlockout:
     title: "1.2.3 | Ensure 'Allow Administrator account lockout' is set to 'Enabled' | AllowAdministratorLockout"
@@ -11,11 +10,12 @@ file:
     exists: true
     contents:
       - '/^1$/'
+    skip: {{ if not .Vars.win11cis_domain_joined }}false{{ else }}true{{ end }}
     meta:
+      skip_reason: "domain scoped - on a domain joined host the Default Domain Policy sets this [System Access] value, so the role does not apply it"
       workstation: 1
       CIS_ID:
         - 1.2.3
-      {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}

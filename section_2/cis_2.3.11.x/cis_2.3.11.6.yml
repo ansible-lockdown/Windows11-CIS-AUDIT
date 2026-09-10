@@ -2,13 +2,16 @@
 
 {{ if .Vars.win11cis_level_1 }}
   {{ if .Vars.win11cis_rule_2_3_11_6 }}
-registry:
-  HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters\EnableForcedLogOff:
-    title: "2.3.11.6 | Ensure 'Network security: Force logoff when logon hours expire' is set to 'Enabled' | EnableForcedLogOff"
+file:
+  win11cis_2_3_11_6_forcelogoffwhenhourexpire:
+    title: "2.3.11.6 | Ensure 'Network security: Force logoff when logon hours expire' is set to 'Enabled' | ForceLogoffWhenHourExpire"
+    path: '{{ .Vars.win11cis_snapshot_dir }}\SystemAccess.ForceLogoffWhenHourExpire'
     exists: true
-    value: 1
-    type: REG_DWORD
+    contents:
+      - '/^1$/'
+    skip: {{ if not .Vars.win11cis_domain_joined }}false{{ else }}true{{ end }}
     meta:
+      skip_reason: "domain scoped - on a domain joined host the Default Domain Policy sets this [System Access] value, so the role does not apply it"
       workstation: 1
       CIS_ID:
         - 2.3.11.6
